@@ -1,10 +1,6 @@
-// let process.env. =
-//     "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=7c7034e65c22ade9db6191d62074a4e0&page=1"; //popular api
-// let SEARCH_API =
-//     "https://api.themoviedb.org/3/search/movie?api_key=7c7034e65c22ade9db6191d62074a4e0&query=";
-// let IMG_PATH = "https://image.tmdb.org/t/p/w1280"; //search api
-import './node_modules/dotenv/config.js'
-console.log(process.env)
+API_URL = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=7c7034e65c22ade9db6191d62074a4e0&page=1"
+SEARCH_API = "https://api.themoviedb.org/3/search/movie?api_key=7c7034e65c22ade9db6191d62074a4e0&query="
+IMG_PATH = "https://image.tmdb.org/t/p/w1280"
 
 let num = 12; //number of panels
 let flag = false; //to clear all panels on search
