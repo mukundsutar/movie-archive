@@ -1,3 +1,4 @@
 function showPage() {
-    sessionStorage
+    console.log("hello");
+    // sessionStorage
 }
