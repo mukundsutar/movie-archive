@@ -1,8 +1,10 @@
-let API_URL =
-    "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=7c7034e65c22ade9db6191d62074a4e0&page=1"; //popular api
-let SEARCH_API =
-    "https://api.themoviedb.org/3/search/movie?api_key=7c7034e65c22ade9db6191d62074a4e0&query=";
-let IMG_PATH = "https://image.tmdb.org/t/p/w1280"; //search api
+// let API_URL =
+//     "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=7c7034e65c22ade9db6191d62074a4e0&page=1"; //popular api
+// let SEARCH_API =
+//     "https://api.themoviedb.org/3/search/movie?api_key=7c7034e65c22ade9db6191d62074a4e0&query=";
+// let IMG_PATH = "https://image.tmdb.org/t/p/w1280"; //search api
+require('dotenv').config();
+
 let num = 12; //number of panels
 let flag = false; //to clear all panels on search
 
@@ -51,8 +53,10 @@ async function createPanel(poster_path, id) {
     // check wheather poster_pasth is not empty
     if (poster_path !== null) {
         newElement.src = "";
-        newElement.src = IMG_PATH + poster_path + "?dummy=371662";
+        newElement.src = IMG_PATH + poster_path;
     }
+    newElement.setAttribute("alt", "Image not found in the Database")
+    newElement.classList.add("poster-img");
     newElement.id = "poster" + id;
 }
 
