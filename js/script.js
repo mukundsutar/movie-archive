@@ -6,17 +6,19 @@ let IMG_PATH = "https://image.tmdb.org/t/p/w1280"; //search api
 let num = 12; //number of panels
 let flag = false; //to clear all panels on search
 
+// starts as soon as the window loads
 window.onload = async function () {
     start(API_URL);
 };
 
-//starts
+//start all code
 async function start(url) {
     for (let i = 0; i < num; i++) {
         getMovies(i, url);
     }
 }
 
+// gets all movies from api -> json -> variable, and calls createPenel function
 async function getMovies(id, url) {
     // console.log(url);
     let res = await fetch(url);
@@ -29,12 +31,14 @@ async function getMovies(id, url) {
 
     // console.log(id);
 
-    createPanels(movie_poster, id);
+    createPanel(movie_poster, id);
 }
 
-async function createPanels(poster_path, id) {
+// creates panel in a grid using parameters got from getMovies
+async function createPanel(poster_path, id) {
     let movie_tray = document.getElementById("movie-tray");
 
+    // to clear all child nodeds after search
     if (flag) {
         movie_tray.replaceChildren();
         flag = false;
@@ -44,18 +48,19 @@ async function createPanels(poster_path, id) {
 
     movie_tray.appendChild(newElement);
 
+    // check wheather poster_pasth is not empty
     if (poster_path !== null) {
         newElement.src = "";
         newElement.src = IMG_PATH + poster_path + "?dummy=371662";
     }
-    console.log(newElement.src);
     newElement.id = "poster" + id;
 }
 
-// Search results
+// get elements
 let form = document.getElementById("searchForm");
 let search = document.getElementById("searchText");
 
+// event listener for input box when enter would press
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
