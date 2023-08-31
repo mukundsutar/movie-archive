@@ -3,4 +3,4 @@
 3. Figure our api keys, can you git ignore with session key
 4. Clear the clutter of useless files
 
-IMP 5. the button cli
+IMP 5. learn how to get "which anchor was clicked" and be able to transfer the name/id of img clicked to determine movie
