@@ -1,16 +1,17 @@
-// let API_URL =
+// let process.env. =
 //     "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=7c7034e65c22ade9db6191d62074a4e0&page=1"; //popular api
 // let SEARCH_API =
 //     "https://api.themoviedb.org/3/search/movie?api_key=7c7034e65c22ade9db6191d62074a4e0&query=";
 // let IMG_PATH = "https://image.tmdb.org/t/p/w1280"; //search api
-require('dotenv').config();
+import './node_modules/dotenv/config.js'
+console.log(process.env)
 
 let num = 12; //number of panels
 let flag = false; //to clear all panels on search
 
 // starts as soon as the window loads
 window.onload = async function () {
-    start(API_URL);
+    start(process.env.API_URL);
 };
 
 //start all code
@@ -72,9 +73,9 @@ form.addEventListener("submit", (e) => {
 
     if (searchTerm && searchTerm !== "") {
         // console.log(SEARCH_API + searchTerm)
-        let searchResultURL = SEARCH_API + searchTerm;
+        let searchResultURL = process.env.SEARCH_API + searchTerm;
         flag = true;
-        start(SEARCH_API + searchTerm);
+        start(process.env.SEARCH_API + searchTerm);
 
         search.value = "";
     } else {
