@@ -69,10 +69,10 @@ async function createPanel(movie_name, movie_plot, poster_path, id) {
     newElement.classList.add("poster-img");
     newElement.id = "poster" + id;
     newAnchor.setAttribute("href", "result.html");
+    newElement.setAttribute("onclick", "showPage()");
 
 
     // save name storage to access for results
-    sessionStorage.setItem("name")
 }
 
 

@@ -1,3 +1,3 @@
-let flag= sessionStorage.getItem("sessionFlag");
-console.log(flag);
-
+function showPage() {
+    sessionStorage
+}
