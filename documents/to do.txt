@@ -1,0 +1,4 @@
+1. Check why made a ssession storage for flag
+2. Extract more features from api
+3. Figure our api keys, can you git ignore with session key
+4. Clear the clutter of useless files
