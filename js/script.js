@@ -7,7 +7,7 @@ let flag = false; //to clear all panels on search
 
 // starts as soon as the window loads
 window.onload = async function () {
-    start(process.env.API_URL);
+    start(API_URL);
 };
 
 //start all code
@@ -69,9 +69,9 @@ form.addEventListener("submit", (e) => {
 
     if (searchTerm && searchTerm !== "") {
         // console.log(SEARCH_API + searchTerm)
-        let searchResultURL = process.env.SEARCH_API + searchTerm;
+        let searchResultURL = SEARCH_API + searchTerm;
         flag = true;
-        start(process.env.SEARCH_API + searchTerm);
+        start(SEARCH_API + searchTerm);
 
         search.value = "";
     } else {
