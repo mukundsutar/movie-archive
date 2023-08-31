@@ -1,0 +1,7 @@
+1. Title
+2. Year
+3. Genre
+4. Score/Critics
+5. Plot
+6. Poster
+7. Original Language

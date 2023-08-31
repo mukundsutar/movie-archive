@@ -1,0 +1,62 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    width: 100%;
+    min-height: 10vh;
+    max-height: 10vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: plum;
+}
+
+.content {
+    width: 100%;
+    height: max-content;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    padding-top: 1.5rem;
+
+    background-color: crimson;
+}
+
+.content img {
+    width: 300px;
+    height: 445;
+
+    padding: 1.5rem 1.5rem;
+}
+
+.footer {
+    padding: 30px;
+
+    background-color: crimson;
+    font-size: 30px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.footer a:visited {
+    text-decoration: none;
+    color: aliceblue;
+}
