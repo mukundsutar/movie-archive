@@ -1,6 +1,6 @@
-1. Check why made a ssession storage for flag
+1. Check why made a ssession storage for flag [Removed]
 2. Extract more features from api
 3. Figure our api keys, can you git ignore with session key
 4. Clear the clutter of useless files
 
-IMP 5. learn how to get "which anchor was clicked" and be able to transfer the name/id of img clicked to determine movie
+IMP 5. CORS error, try changing the same page using js to solve it
