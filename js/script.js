@@ -7,58 +7,53 @@ IMG_PATH = "https://image.tmdb.org/t/p/w1280";
 let num = 12; //number of panels
 // let flag = false; //to clear all panels on search
 sessionStorage.setItem("sessionFlag", "false");
-let flag= sessionStorage.getItem("sessionFlag");
-
+let flag = sessionStorage.getItem("sessionFlag");
 
 // starts as soon as the window loads
 window.onload = async function () {
     start(API_URL);
 };
 
-
-
 //start all code
 async function start(url) {
-    for (let i = 0; i < num; i++) {
+    for (let i = 1; i <= num; i++) {
         getMovies(i, url);
     }
 }
 
-
-
 // gets all movies from api -> json -> variable, and calls createPenel function
-async function getMovies(id, url) {
+async function getMovies(index, url) {
     // console.log(url);
     let res = await fetch(url);
     let data = await res.json();
 
-    let movie_name = data["results"][id]["original_title"];
-    let movie_plot = data["results"][id]["overview"];
-    let movie_poster = data["results"][id]["poster_path"];
+    let movie_name = data["results"][index]["original_title"];
+    let movie_plot = data["results"][index]["overview"];
+    let movie_poster = data["results"][index]["poster_path"];
+    let movie_id = data["results"][index]["id"];
 
-    // console.log(id);
-
-    createPanel(movie_name, movie_plot, movie_poster, id);
+    createPanel(movie_name, movie_plot, movie_poster, movie_id, index);
 }
 
-
-
 // creates panel in a grid using parameters got from getMovies
-async function createPanel(movie_name, movie_plot, poster_path, id) {
+async function createPanel(
+    movie_name,
+    movie_plot,
+    poster_path,
+    movie_id,
+    index
+) {
     let movie_tray = document.getElementById("movie-tray");
 
     // to clear all child nodeds after search
-    if (flag=="true") {
+    if (flag == "true") {
         movie_tray.replaceChildren();
         flag = "false";
     }
 
-    let newAnchor = document.createElement("a");
     let newElement = document.createElement("img");
 
-    movie_tray.appendChild(newAnchor);
-    newAnchor.id = "poster-link" + id;
-    newAnchor.appendChild(newElement);
+    movie_tray.appendChild(newElement);
 
     // check wheather poster_pasth is not empty
     if (poster_path !== null) {
@@ -66,16 +61,12 @@ async function createPanel(movie_name, movie_plot, poster_path, id) {
         newElement.src = IMG_PATH + poster_path;
     }
     newElement.setAttribute("alt", "Image not found in the Database");
-    newElement.classList.add("poster-img");
-    newElement.id = "poster" + id;
-    newAnchor.setAttribute("href", "result.html");
-    newElement.setAttribute("onclick", "showPage()");
-
+    newElement.classList.add("poster-img", "poster" + index);
+    newElement.id = movie_id;
+    newElement.setAttribute("onclick", "getID(this.id); showPage()");
 
     // save name storage to access for results
 }
-
-
 
 // get elements
 let form = document.getElementById("searchForm");
@@ -90,7 +81,7 @@ form.addEventListener("submit", (e) => {
     if (searchTerm && searchTerm !== "") {
         // console.log(SEARCH_API + searchTerm)
         let searchResultURL = SEARCH_API + searchTerm;
-        flag ="true";
+        flag = "true";
 
         start(SEARCH_API + searchTerm);
 
