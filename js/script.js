@@ -109,18 +109,18 @@ function deletePage(id) {
 }
 
 function showPage(id, movieTray) {
-    let movieName = document.createElement("div");
-    movieName.id = "movie-name";
+    let movieInfo = document.createElement("div");
+    movieInfo.id = "movie-info";
     let moviePoster = document.createElement("div");
     moviePoster.id = "movie-poster";
     let moviePosterImg = document.createElement("img");
     moviePosterImg.id= "poster" + 1;
-    let movieInfo = document.createElement("div");
-    movieInfo.id = "movie-info";
+    let moviePlot = document.createElement("div");
+    moviePlot.id = "movie-plot";
 
-    movieTray.appendChild(movieName);
-    movieTray.appendChild(moviePoster);
     movieTray.appendChild(movieInfo);
+    movieTray.appendChild(moviePoster);
+    movieTray.appendChild(moviePlot);
     moviePoster.appendChild(moviePosterImg);
 
     let movie_unique= `https://api.themoviedb.org/3/movie/${id}?api_key=7c7034e65c22ade9db6191d62074a4e0`
@@ -144,14 +144,44 @@ function changeID() {
 }
 
 function updatePage(data) {
-    let name = document.getElementById("movie-name");
-    let poster = document.getElementById("poster1")
-
+    let info = document.getElementById("movie-info");
+    let poster = document.getElementById("poster1");
+    let plot= document.getElementById("movie-plot");
+    
     let movie_name = data["original_title"];
-    let movie_plot = data["overview"];
+    
+    let movie_genre= [];
+    for (let i = 0; i < data["genres"].length; i++) {
+        movie_genre.push(data["genres"][i]["name"])
+    }
+    
     let movie_poster = data["poster_path"];
+    let movie_plot = data["overview"];
     let movie_id = data["id"];
-
-    name.innerText = movie_name;
+    
     poster.src= IMG_PATH + movie_poster;
+    plot.innerText= movie_plot;
+
+    buildInfo(info, movie_name, movie_genre);
+}
+
+function buildInfo(info, movie_name, movie_genre) {
+    let name= document.createElement("div");
+    name.id= "info-name";
+    let genre= document.createElement("div");
+    genre.id= "info-genre";
+    let rating = document.createElement("div");
+    rating.id= "info-rating";
+
+    info.appendChild(name);
+    info.appendChild(genre);
+    info.appendChild(rating);
+
+    name.innerText= movie_name;
+
+    let genreStr= "";
+    for (let i = 0; i < movie_genre.length; i++) {
+        genreStr=genreStr.concat(movie_genre[i] + " "); 
+    }
+    genre.innerText=genreStr;
 }

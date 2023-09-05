@@ -17,13 +17,14 @@
     flex-grow: 2;
 }
 
-#movie-name {
+#movie-info {
     width: var(--name-width);
     height: var(--poster-frame-height);
 
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
     background-color: bisque;
 }
@@ -42,7 +43,7 @@
     height: var(--poster-img-height);
 }
 
-#movie-info {
+#movie-plot {
     width: 100%;
     height: 100px;
 
