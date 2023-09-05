@@ -5,9 +5,8 @@ SEARCH_API =
 IMG_PATH = "https://image.tmdb.org/t/p/w1280";
 
 let num = 12; //number of panels
-// let flag = false; //to clear all panels on search
-sessionStorage.setItem("sessionFlag", "false");
-let flag = sessionStorage.getItem("sessionFlag");
+let flag = false; //to clear all panels on search
+let resultFlag = false;
 
 // starts as soon as the window loads
 window.onload = async function () {
@@ -16,23 +15,27 @@ window.onload = async function () {
 
 //start all code
 async function start(url) {
-    for (let i = 1; i <= num; i++) {
+    for (let i = 0; i < num; i++) {
         getMovies(i, url);
     }
 }
 
 // gets all movies from api -> json -> variable, and calls createPenel function
 async function getMovies(index, url) {
-    // console.log(url);
     let res = await fetch(url);
     let data = await res.json();
 
-    let movie_name = data["results"][index]["original_title"];
-    let movie_plot = data["results"][index]["overview"];
-    let movie_poster = data["results"][index]["poster_path"];
-    let movie_id = data["results"][index]["id"];
+    if (resultFlag) {
+        updatePage(data);
+        resultFlag = false;
+    } else {
+        let movie_name = data["results"][index]["original_title"];
+        let movie_plot = data["results"][index]["overview"];
+        let movie_poster = data["results"][index]["poster_path"];
+        let movie_id = data["results"][index]["id"];
 
-    createPanel(movie_name, movie_plot, movie_poster, movie_id, index);
+        createPanel(movie_name, movie_plot, movie_poster, movie_id, index);
+    }
 }
 
 // creates panel in a grid using parameters got from getMovies
@@ -46,9 +49,9 @@ async function createPanel(
     let movie_tray = document.getElementById("movie-tray");
 
     // to clear all child nodeds after search
-    if (flag == "true") {
+    if (flag) {
         movie_tray.replaceChildren();
-        flag = "false";
+        flag = false;
     }
 
     let newElement = document.createElement("img");
@@ -63,9 +66,7 @@ async function createPanel(
     newElement.setAttribute("alt", "Image not found in the Database");
     newElement.classList.add("poster-img", "poster" + index);
     newElement.id = movie_id;
-    newElement.setAttribute("onclick", "getID(this.id); showPage()");
-
-    // save name storage to access for results
+    newElement.setAttribute("onclick", "getID(this.id); deletePage(this.id)");
 }
 
 // get elements
@@ -81,7 +82,7 @@ form.addEventListener("submit", (e) => {
     if (searchTerm && searchTerm !== "") {
         // console.log(SEARCH_API + searchTerm)
         let searchResultURL = SEARCH_API + searchTerm;
-        flag = "true";
+        flag = true;
 
         start(SEARCH_API + searchTerm);
 
@@ -90,3 +91,67 @@ form.addEventListener("submit", (e) => {
         window.location.reload();
     }
 });
+
+function getID(id) {
+    console.log(id);
+    let poster = document.createElement("img");
+    let posterDiv = document.getElementsByClassName("movie-poster");
+}
+
+function deletePage(id) {
+    let movieTray = document.getElementById("movie-tray");
+
+    while (movieTray.lastElementChild) {
+        movieTray.removeChild(movieTray.lastElementChild);
+    }
+
+    showPage(id, movieTray);
+}
+
+function showPage(id, movieTray) {
+    let movieName = document.createElement("div");
+    movieName.id = "movie-name";
+    let moviePoster = document.createElement("div");
+    moviePoster.id = "movie-poster";
+    let moviePosterImg = document.createElement("img");
+    moviePosterImg.id= "poster" + 1;
+    let movieInfo = document.createElement("div");
+    movieInfo.id = "movie-info";
+
+    movieTray.appendChild(movieName);
+    movieTray.appendChild(moviePoster);
+    movieTray.appendChild(movieInfo);
+    moviePoster.appendChild(moviePosterImg);
+
+    let movie_unique= `https://api.themoviedb.org/3/movie/${id}?api_key=7c7034e65c22ade9db6191d62074a4e0`
+
+    changeID();
+    resultFlag = true;
+    getMovies(
+        0,
+        movie_unique
+    );
+}
+
+function changeID() {
+    let movieTrayClass = document.getElementsByClassName("content");
+    let movieTrayID = document.getElementById("movie-tray");
+
+    movieTrayClass[0].classList.add("content-result");
+    movieTrayClass[0].classList.remove("content");
+
+    movieTrayID.id = "movie-tray-result";
+}
+
+function updatePage(data) {
+    let name = document.getElementById("movie-name");
+    let poster = document.getElementById("poster1")
+
+    let movie_name = data["original_title"];
+    let movie_plot = data["overview"];
+    let movie_poster = data["poster_path"];
+    let movie_id = data["id"];
+
+    name.innerText = movie_name;
+    poster.src= IMG_PATH + movie_poster;
+}
