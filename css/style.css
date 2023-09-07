@@ -1,12 +1,12 @@
 body {
     margin: 0px;
     padding: 0px;
+    overflow-x: hidden;
 }
 
 .container {
-    width: 100vw;
+    width: 99vw;
     height: auto;
-    overflow-x: hidden;
 
     display: flex;
     flex-direction: column;
