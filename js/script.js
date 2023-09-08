@@ -178,6 +178,11 @@ function buildInfo(info, movie_name, movie_genre, movie_vote, movie_tagline, mov
     let date= document.createElement("div");
     date.id = "info-release-date"
 
+    let idArr= [name, genre, rating, tagline, date]
+    for (let i = 1; i < idArr.length; i++) {
+        idArr[i].classList.add("information");
+    }
+
 	info.appendChild(name);
     info.appendChild(tagline);
 	info.appendChild(genre);
