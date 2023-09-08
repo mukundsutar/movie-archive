@@ -145,7 +145,7 @@ function updatePage(data) {
 	let poster = document.getElementById("poster1");
 	let plot = document.getElementById("movie-plot");
 
-	let movie_name = data["original_title"];
+	let movie_name = data["title"];
 
 	let movie_genre = [];
 	for (let i = 0; i < data["genres"].length; i++) {
