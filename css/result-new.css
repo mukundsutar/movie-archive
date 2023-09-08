@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap');
+
 :root {
     --poster-img-width: 300px;
     --poster-img-height: 450px;
@@ -15,14 +17,18 @@
     display: flex;
     flex-wrap: wrap;
     flex-grow: 2;
+
+    font-family: 'Playfair Display', serif;
 }
 
 #movie-info {
     width: var(--name-width);
     height: var(--poster-frame-height);
 
+    padding: 100px 0px;
+
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 
@@ -45,7 +51,20 @@
 
 #movie-plot {
     width: 100%;
-    height: 100px;
+    height: 100%;
+
+    padding: 20px;
 
     background-color: blanchedalmond;
+    font-size: 30px;
+}
+
+#info-name{
+    font-size: 60px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+}
+
+#info-tagline{
+    margin-bottom: 50px;
 }
