@@ -117,6 +117,8 @@ function showPage(id, movieTray) {
 	moviePosterImg.id = "poster" + 1;
 	let moviePlot = document.createElement("div");
 	moviePlot.id = "movie-plot";
+	let movieSimilar = document.createElement("div");
+	movieSimilar.id = "movie-similar";
 
 	movieTray.appendChild(movieInfo);
 	movieTray.appendChild(moviePoster);
@@ -156,54 +158,89 @@ function updatePage(data) {
 	let movie_plot = data["overview"];
 	let movie_id = data["id"];
 	let movie_vote = data["vote_average"];
-    let movie_tagline= data["tagline"];
-    let movie_releaseDate= data["release_date"];
-    let status = data["status"];
+	let movie_tagline = data["tagline"];
+	let movie_releaseDate = data["release_date"];
+	let status = data["status"];
 
 	poster.src = IMG_PATH + movie_poster;
 	plot.innerText = movie_plot;
 
-	buildInfo(info, movie_name, movie_genre, movie_vote, movie_tagline, movie_releaseDate);
+	buildInfo(
+		info,
+		movie_name,
+		movie_genre,
+		movie_vote,
+		movie_tagline,
+		movie_releaseDate
+	);
 }
 
-function buildInfo(info, movie_name, movie_genre, movie_vote, movie_tagline, movie_releaseDate) {
+function buildInfo(
+	info,
+	movie_name,
+	movie_genre,
+	movie_vote,
+	movie_tagline,
+	movie_releaseDate
+) {
 	let name = document.createElement("div");
 	name.id = "info-name";
 	let genre = document.createElement("div");
 	genre.id = "info-genre";
+	let popularity = document.createElement("div");
+	popularity.id = "info-popularity";
 	let rating = document.createElement("div");
 	rating.id = "info-rating";
-    let tagline= document.createElement("div");
-    tagline.id= "info-tagline"
-    let date= document.createElement("div");
-    date.id = "info-release-date"
+	let tagline = document.createElement("div");
+	tagline.id = "info-tagline";
+	let date = document.createElement("div");
+	date.id = "info-release-date";
 
-    let idArr= [name, genre, rating, tagline, date]
-    for (let i = 1; i < idArr.length; i++) {
-        idArr[i].classList.add("information");
-    }
+	let idArr = [genre, popularity, rating, tagline, date];
+	for (let i = 0; i < idArr.length; i++) {
+		idArr[i].classList.add("information");
+	}
 
 	info.appendChild(name);
-    info.appendChild(tagline);
+	info.appendChild(tagline);
+	info.appendChild(date);
 	info.appendChild(genre);
-    info.appendChild(date);
 	info.appendChild(rating);
 
 	name.innerText = movie_name;
 
-    tagline.innerText= movie_tagline;
+	tagline.innerText = movie_tagline;
 
 	let genreStr = "";
 	for (let i = 0; i < movie_genre.length; i++) {
+		genreStr = genreStr.concat(movie_genre[i]);
 		if (i < movie_genre.length - 1) {
-			genreStr = genreStr.concat(movie_genre[i] + " / ");
-		} else {
-			genreStr = genreStr.concat(movie_genre[i]);
+			genreStr = genreStr.concat(" / ");
 		}
 	}
 	genre.innerText = genreStr;
 
-    date.innerText= "Release Date: " + movie_releaseDate;
+	date.innerText = movie_releaseDate.substr(0, 4);
 
-    rating.innerText= "Rating: " + movie_vote;
+	rating.innerText = "Rating: " + movie_vote;
+
+    // let infoWidth= document.getElementById('movie-info').clientWidth;
+
+    // width= infoWidth-30;
+    // console.log(width);
+
+    // let titleWidth=width.toString();
+    // console.log(titleWidth); 
+
+    // let nameWidth= document.getElementById("movie-info");
+    // let posterWidth= document.getElementById("movie-poster");
+    // let firstRowWidth= document.getElementById("movie-tray-result");
+    
+    // nameWidth.clientWidth = firstRowWidth.clientWidth - posterWidth.clientWidth;
+
+    // console.log(nameWidth.clientWidth);
+    // console.log(firstRowWidth.clientWidth);
+    // console.log(posterWidth.clientWidth);
+
+    // console.log(infoWidth);
 }

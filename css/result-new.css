@@ -4,7 +4,8 @@
     --poster-img-width: 300px;
     --poster-img-height: 450px;
     --img-padding: 20px;
-    --name-width: calc(100% - var(--poster-img-width) - (var(--img-padding) * 2));
+    --name-padding-left: 20px;
+    --name-width: calc(100% - var(--poster-img-width) - (var(--img-padding) * 2) - 60px);
     --name-height: calc(img);
 }
 
@@ -25,14 +26,17 @@
     width: var(--name-width);
     height: var(--poster-frame-height);
 
-    padding: 100px 0px;
+    padding: 0px 30px;
+    /* padding-left: 30px; */
 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
+    /* flex-grow: 2; */
 
     background-color: bisque;
+    font-size: 21px;
 }
 
 #movie-poster {
@@ -60,6 +64,11 @@
 }
 
 #info-name{
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+
     font-size: 60px;
     font-family: 'Playfair Display', serif;
     font-weight: 500;
