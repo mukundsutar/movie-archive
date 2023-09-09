@@ -3,6 +3,7 @@
 3. Figure our api keys, can you git ignore with session key
 4. Clear the clutter of useless files
 5. Implement Optimized code for parsing data
+6. Make API an global variable
 
 IMP 5. CORS error, try changing the same page using js to solve it [workaround] {This works and is now implemented}
 

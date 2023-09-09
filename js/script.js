@@ -6,7 +6,8 @@ IMG_PATH = "https://image.tmdb.org/t/p/w1280";
 
 let num = 12; //number of panels
 let flag = false; //to clear all panels on search
-let resultFlag = false;
+let resultFlag = false; //used when showing result page
+let similarFlag = false; //used for sizing similar
 
 // starts as soon as the window loads
 window.onload = async function () {
@@ -28,6 +29,8 @@ async function getMovies(index, url) {
 	if (resultFlag) {
 		updatePage(data);
 		resultFlag = false;
+	} else if (similarFlag) {
+		buildSimilar(data, index);
 	} else {
 		let movie_name = data["results"][index]["original_title"];
 		let movie_plot = data["results"][index]["overview"];
@@ -63,9 +66,10 @@ async function createPanel(
 		newElement.src = "";
 		newElement.src = IMG_PATH + poster_path;
 	}
-	newElement.setAttribute("alt", "Image not found in the Database");
+
 	newElement.classList.add("poster-img", "poster" + index);
 	newElement.id = movie_id;
+	newElement.setAttribute("alt", "Image not found in the Database");
 	newElement.setAttribute("onclick", "getID(this.id); deletePage(this.id)");
 }
 
@@ -128,12 +132,12 @@ function showPage(id, movieTray) {
 
 	let movie_unique = `https://api.themoviedb.org/3/movie/${id}?api_key=7c7034e65c22ade9db6191d62074a4e0`;
 
-	changeID();
+	changeElementID();
 	resultFlag = true;
 	getMovies(0, movie_unique);
 }
 
-function changeID() {
+function changeElementID() {
 	let movieTrayClass = document.getElementsByClassName("content");
 	let movieTrayID = document.getElementById("movie-tray");
 
@@ -174,6 +178,9 @@ function updatePage(data) {
 		movie_tagline,
 		movie_releaseDate
 	);
+
+	similarFlag = true;
+	startSimilar(movie_id);
 }
 
 function buildInfo(
@@ -225,14 +232,37 @@ function buildInfo(
 	date.innerText = movie_releaseDate.substr(0, 4);
 
 	rating.innerText = "Rating: " + movie_vote;
-
-	createSimilar(movie_id);
 }
 
-function createSimilar(id) {
-	let similarContainer=document.getElementById("movie-similar");
+function startSimilar(id) {
+	let similar_url = `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1&api_key=7c7034e65c22ade9db6191d62074a4e0`;
+
+	console.log(similarFlag);
 
 	for (let i = 0; i < 4; i++) {
-		let 
+		getMovies(i, similar_url);
 	}
+}
+
+function buildSimilar(data, index) {
+	let movie_id = data["results"][index]["id"];
+	let movie_name = data["results"][index]["original_title"];
+	let movie_poster = data["results"][index]["poster_path"];
+
+	let movie_tray = document.getElementById("movie-similar");
+	let newElement = document.createElement("img");
+
+	movie_tray.appendChild(newElement);
+
+	// check wheather poster_pasth is not empty
+	if (movie_poster !== null) {
+		newElement.src = "";
+		newElement.src = IMG_PATH + movie_poster;
+	}
+
+	newElement.classList.add("similar-poster-img", "similar-poster" + index);
+	newElement.id = movie_id;
+
+	newElement.setAttribute("alt", "Image not found in the Database");
+	newElement.setAttribute("onclick", "getID(this.id); deletePage(this.id)");
 }
