@@ -17,3 +17,5 @@ IMP 8. Add Similar section in result page
 IMP 9. Add more tabs like 'Now Showing', 'Upcoming', 'Sort Maybe?'
 
 IMP 10. Change the look and feel of the website
+
+IMP 11. Known Issue home flexbox 1 row left padding less

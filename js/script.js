@@ -32,12 +32,20 @@ async function getMovies(index, url) {
 	} else if (similarFlag) {
 		buildSimilar(data, index);
 	} else {
-		let movie_name = data["results"][index]["original_title"];
+		let movie_name = data["results"][index]["title"];
 		let movie_plot = data["results"][index]["overview"];
 		let movie_poster = data["results"][index]["poster_path"];
 		let movie_id = data["results"][index]["id"];
+		let movie_date = data["results"][index]["release_date"];
 
-		createPanel(movie_name, movie_plot, movie_poster, movie_id, index);
+		createPanel(
+			movie_name,
+			movie_plot,
+			movie_poster,
+			movie_id,
+			movie_date,
+			index
+		);
 	}
 }
 
@@ -45,8 +53,9 @@ async function getMovies(index, url) {
 async function createPanel(
 	movie_name,
 	movie_plot,
-	poster_path,
+	movie_poster,
 	movie_id,
+	movie_date,
 	index
 ) {
 	let movie_tray = document.getElementById("movie-tray");
@@ -57,20 +66,39 @@ async function createPanel(
 		flag = false;
 	}
 
-	let newElement = document.createElement("img");
+	let newCard = document.createElement("div");
+	let newImg = document.createElement("img");
+	let newTitle = document.createElement("p");
+	let newYear = document.createElement("p");
 
-	movie_tray.appendChild(newElement);
+	movie_tray.appendChild(newCard);
+	newCard.appendChild(newImg);
+	newCard.appendChild(newTitle);
+	newCard.appendChild(newYear);
 
 	// check wheather poster_pasth is not empty
-	if (poster_path !== null) {
-		newElement.src = "";
-		newElement.src = IMG_PATH + poster_path;
+	if (movie_poster !== null) {
+		newImg.src = "";
+		newImg.src = IMG_PATH + movie_poster;
 	}
 
-	newElement.classList.add("poster-img", "poster" + index);
-	newElement.id = movie_id;
-	newElement.setAttribute("alt", "Image not found in the Database");
-	newElement.setAttribute("onclick", "getID(this.id); deletePage(this.id)");
+	newCard.id = "card" + movie_id;
+	newCard.classList.add("allCards");
+
+	newTitle.id = "title" + movie_id;
+	newTitle.classList.add("allTitles");
+	newTitle.setAttribute("onclick", `getID(${movie_id}); deletePage(${movie_id})`);
+	newTitle.setAttribute("title", `${movie_name}`);movie_name
+	newTitle.innerText= movie_name;
+
+	newYear.id= "year" + movie_id;
+	newYear.classList.add("allYears");
+	newYear.innerText= movie_date.substr(0, 4);;
+
+	newImg.classList.add("poster-img", "poster" + index);
+	newImg.id = movie_id;
+	newImg.setAttribute("alt", "Image not found in the Database");
+	newImg.setAttribute("onclick", "getID(this.id); deletePage(this.id)");
 }
 
 // get elements
@@ -151,6 +179,8 @@ function updatePage(data) {
 	let info = document.getElementById("movie-info");
 	let poster = document.getElementById("poster1");
 	let plot = document.getElementById("movie-plot");
+
+	console.log(data);
 
 	let movie_name = data["title"];
 
@@ -239,7 +269,7 @@ function startSimilar(id) {
 
 	console.log(similarFlag);
 
-	let similarNum= 12;
+	let similarNum = 12;
 
 	for (let i = 0; i < similarNum; i++) {
 		getMovies(i, similar_url);
