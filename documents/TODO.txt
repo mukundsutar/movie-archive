@@ -12,6 +12,7 @@ IMP 6. Add a back button as due to '5.' have to refresh website for new search o
 IMP 7. Add Hover info to home panels
 
 IMP 8. Add Similar section in result page
+       Make a function to sort movies in similar by date
 
 IMP 9. Add more tabs like 'Now Showing', 'Upcoming', 'Sort Maybe?'
 

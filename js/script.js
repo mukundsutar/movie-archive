@@ -239,7 +239,9 @@ function startSimilar(id) {
 
 	console.log(similarFlag);
 
-	for (let i = 0; i < 4; i++) {
+	let similarNum= 12;
+
+	for (let i = 0; i < similarNum; i++) {
 		getMovies(i, similar_url);
 	}
 }
