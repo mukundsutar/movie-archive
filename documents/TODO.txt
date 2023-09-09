@@ -6,7 +6,7 @@
 
 IMP 5. CORS error, try changing the same page using js to solve it [workaround] {This works and is now implemented}
 
-IMP 6. Add a back button as due to '5.' have to refresh website for new search
+IMP 6. Add a back button as due to '5.' have to refresh website for new search on result page
 
 IMP 7. Add Hover info to home panels
 

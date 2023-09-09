@@ -123,6 +123,7 @@ function showPage(id, movieTray) {
 	movieTray.appendChild(movieInfo);
 	movieTray.appendChild(moviePoster);
 	movieTray.appendChild(moviePlot);
+	movieTray.appendChild(movieSimilar);
 	moviePoster.appendChild(moviePosterImg);
 
 	let movie_unique = `https://api.themoviedb.org/3/movie/${id}?api_key=7c7034e65c22ade9db6191d62074a4e0`;
@@ -160,13 +161,13 @@ function updatePage(data) {
 	let movie_vote = data["vote_average"];
 	let movie_tagline = data["tagline"];
 	let movie_releaseDate = data["release_date"];
-	let status = data["status"];
 
 	poster.src = IMG_PATH + movie_poster;
 	plot.innerText = movie_plot;
 
 	buildInfo(
 		info,
+		movie_id,
 		movie_name,
 		movie_genre,
 		movie_vote,
@@ -177,6 +178,7 @@ function updatePage(data) {
 
 function buildInfo(
 	info,
+	movie_id,
 	movie_name,
 	movie_genre,
 	movie_vote,
@@ -224,23 +226,13 @@ function buildInfo(
 
 	rating.innerText = "Rating: " + movie_vote;
 
-    // let infoWidth= document.getElementById('movie-info').clientWidth;
+	createSimilar(movie_id);
+}
 
-    // width= infoWidth-30;
-    // console.log(width);
+function createSimilar(id) {
+	let similarContainer=document.getElementById("movie-similar");
 
-    // let titleWidth=width.toString();
-    // console.log(titleWidth); 
-
-    // let nameWidth= document.getElementById("movie-info");
-    // let posterWidth= document.getElementById("movie-poster");
-    // let firstRowWidth= document.getElementById("movie-tray-result");
-    
-    // nameWidth.clientWidth = firstRowWidth.clientWidth - posterWidth.clientWidth;
-
-    // console.log(nameWidth.clientWidth);
-    // console.log(firstRowWidth.clientWidth);
-    // console.log(posterWidth.clientWidth);
-
-    // console.log(infoWidth);
+	for (let i = 0; i < 4; i++) {
+		let 
+	}
 }
