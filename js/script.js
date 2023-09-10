@@ -294,6 +294,8 @@ function buildSimilar(data, index) {
 		newElement.src = IMG_PATH + movie_poster;
 	}
 
+	movie_tray.setAttribute("onmouseover", "scrollHorizontally()")
+
 	newElement.classList.add("similar-poster-img", "similar-poster" + index);
 	newElement.id = movie_id;
 
