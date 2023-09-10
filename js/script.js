@@ -87,13 +87,17 @@ async function createPanel(
 
 	newTitle.id = "title" + movie_id;
 	newTitle.classList.add("allTitles");
-	newTitle.setAttribute("onclick", `getID(${movie_id}); deletePage(${movie_id})`);
-	newTitle.setAttribute("title", `${movie_name}`);movie_name
-	newTitle.innerText= movie_name;
+	newTitle.setAttribute(
+		"onclick",
+		`getID(${movie_id}); deletePage(${movie_id})`
+	);
+	newTitle.setAttribute("title", `${movie_name}`);
+	movie_name;
+	newTitle.innerText = movie_name;
 
-	newYear.id= "year" + movie_id;
+	newYear.id = "year" + movie_id;
 	newYear.classList.add("allYears");
-	newYear.innerText= movie_date.substr(0, 4);;
+	newYear.innerText = movie_date.substr(0, 4);
 
 	newImg.classList.add("poster-img", "poster" + index);
 	newImg.id = movie_id;
@@ -179,8 +183,6 @@ function updatePage(data) {
 	let info = document.getElementById("movie-info");
 	let poster = document.getElementById("poster1");
 	let plot = document.getElementById("movie-plot");
-
-	console.log(data);
 
 	let movie_name = data["title"];
 
@@ -299,8 +301,11 @@ function buildSimilar(data, index) {
 	newElement.setAttribute("onclick", "getID(this.id); deletePage(this.id)");
 }
 
-function sortMovies(data) {
-	let movie_array= [];
-
+function scrollHorizontally() {
+	const scrollContainer = document.querySelector("#movie-similar");
 	
+	scrollContainer.addEventListener("wheel", (evt) => {
+		evt.preventDefault();
+		scrollContainer.scrollLeft += evt.deltaY;
+	});
 }
