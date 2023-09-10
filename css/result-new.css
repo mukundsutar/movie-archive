@@ -9,7 +9,11 @@
     --name-height: calc(img);
     
 
-    --background-color: #ef233c;
+    --background-color: #171717;
+}
+
+body{
+    background-color: var(--background-color);
 }
 
 #movie-tray-result {
@@ -22,7 +26,8 @@
     flex-wrap: wrap;
     flex-grow: 2;
 
-    font-family: 'Playfair Display', serif;
+    font-family: 'Arimo', sans-serif;
+    color: aliceblue;
 }
 
 #movie-info {
@@ -38,7 +43,7 @@
     flex-direction: column;
     /* flex-grow: 2; */
 
-    background-color: bisque;
+    background-color: var(--background-color);
     font-size: 21px;
 }
 
@@ -48,7 +53,7 @@
 
     padding: var(--img-padding);
 
-    background-color: darksalmon;
+    background-color: var(--background-color);
 }
 
 #movie-poster img {
@@ -62,7 +67,7 @@
 
     padding: 20px;
 
-    background-color: blanchedalmond;
+    background-color: var(--background-color);
     font-size: 30px;
 }
 
@@ -73,7 +78,6 @@
     flex-wrap: wrap;
 
     font-size: 60px;
-    font-family: 'Playfair Display', serif;
     font-weight: 500;
 }
 

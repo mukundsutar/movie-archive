@@ -43,23 +43,6 @@ body {
     border-radius: 1px;
 }
 
-.footer {
-    padding: 30px;
-
-    background-color: #171717;
-    font-size: 30px;
-}
-
-.footer a {
-    text-decoration: none;
-    color: aliceblue;
-}
-
-.footer a:visited {
-    text-decoration: none;
-    color: aliceblue;
-}
-
 .allCards {
     display: flex;
     flex-direction: column;
@@ -79,19 +62,19 @@ body {
 }
 
 .poster-img:hover {
-    animation: myAnim .5s ease-in-out 0s 1 normal forwards;
+    animation: myAnim .2s ease-in-out 0s 1 normal forwards;
 }
 
 @keyframes myAnim {
-	0% {
-		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-		transform: scale(1);
-	}
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        transform: scale(1);
+    }
 
-	100% {
-		box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-		transform: scale(1.05);
-	}
+    100% {
+        box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+        transform: scale(1.05);
+    }
 }
 
 .allTitles {
@@ -103,8 +86,8 @@ body {
     color: aliceblue;
 
     white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .allTitles:hover {
@@ -153,4 +136,21 @@ body {
 
 #back:active {
     border-color: #C2C2C2;
+}
+
+.footer {
+    padding: 30px;
+
+    background-color: #171717;
+    font-size: 30px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.footer a:visited {
+    text-decoration: none;
+    color: aliceblue;
 }

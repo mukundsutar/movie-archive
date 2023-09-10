@@ -265,7 +265,7 @@ function buildInfo(
 }
 
 function startSimilar(id) {
-	let similar_url = `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1&api_key=7c7034e65c22ade9db6191d62074a4e0`;
+	let similar_url = `https://api.themoviedb.org/3/movie/${id}/recommendations?language=en-US&page=1&api_key=7c7034e65c22ade9db6191d62074a4e0`;
 
 	console.log(similarFlag);
 
@@ -297,4 +297,10 @@ function buildSimilar(data, index) {
 
 	newElement.setAttribute("alt", "Image not found in the Database");
 	newElement.setAttribute("onclick", "getID(this.id); deletePage(this.id)");
+}
+
+function sortMovies(data) {
+	let movie_array= [];
+
+	
 }
