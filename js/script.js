@@ -8,38 +8,43 @@ let num = 12; //number of panels
 let flag = false; //to clear all panels on search
 let resultFlag = false; //used when showing result page
 let similarFlag = false; //used for sizing similar
+let tabFlag = "popular";
+let keywordFlag = false;
 
 // starts as soon as the window loads
 window.onload = async function () {
-	console.log("here");
+	tabFlag = "popular";
 	start(API_URL);
 };
 
 // starts as soon as the window loads
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("here");
 	start(API_URL);
 });
 
 //start all code
 async function start(url) {
 	for (let i = 0; i < num; i++) {
-		getMovies(i, url);
+		getMoviesData(i, url);
 	}
 }
 
 // gets all movies from api -> json -> variable, and calls createPenel function
-async function getMovies(index, url) {
+async function getMoviesData(index, url) {
 	let res = await fetch(url);
 	let data = await res.json();
-	console.log(data);
 
 	if (resultFlag) {
 		updatePage(data);
 		resultFlag = false;
 	} else if (similarFlag) {
 		buildSimilar(data, index);
-	} else {
+	}
+	//  else if (keywordFlag) {
+	// 	buildKeywords(data);
+	// 	keywordFlag = false;
+	// } 
+	else {
 		let movie_name = data["results"][index]["title"];
 		let movie_plot = data["results"][index]["overview"];
 		let movie_poster = data["results"][index]["poster_path"];
@@ -57,7 +62,7 @@ async function getMovies(index, url) {
 	}
 }
 
-// creates panel in a grid using parameters got from getMovies
+// creates panel in a grid using parameters got from getMoviesData
 async function createPanel(
 	movie_name,
 	movie_plot,
@@ -124,8 +129,6 @@ form.addEventListener("submit", (e) => {
 	let searchTerm = search.value;
 
 	if (searchTerm && searchTerm !== "") {
-		// console.log(SEARCH_API + searchTerm)
-		let searchResultURL = SEARCH_API + searchTerm;
 		flag = true;
 
 		start(SEARCH_API + searchTerm);
@@ -161,6 +164,8 @@ function showPage(id, movieTray) {
 	moviePosterImg.id = "poster" + 1;
 	let moviePlot = document.createElement("div");
 	moviePlot.id = "movie-plot";
+	let movieKeywords = document.createElement("div");
+	movieKeywords.id = "movie-keyword";
 	let movieSimilar = document.createElement("div");
 	movieSimilar.id = "movie-similar";
 
@@ -168,13 +173,14 @@ function showPage(id, movieTray) {
 	movieTray.appendChild(moviePoster);
 	movieTray.appendChild(moviePlot);
 	movieTray.appendChild(movieSimilar);
+	movieTray.appendChild(movieKeywords);
 	moviePoster.appendChild(moviePosterImg);
 
 	let movie_unique = `https://api.themoviedb.org/3/movie/${id}?api_key=7c7034e65c22ade9db6191d62074a4e0`;
 
 	changeElementID();
 	resultFlag = true;
-	getMovies(0, movie_unique);
+	getMoviesData(0, movie_unique);
 }
 
 function changeElementID() {
@@ -208,6 +214,8 @@ function updatePage(data) {
 
 	poster.src = IMG_PATH + movie_poster;
 	plot.innerText = movie_plot;
+
+	startKeywords(movie_id);
 
 	buildInfo(
 		info,
@@ -277,12 +285,12 @@ function buildInfo(
 function startSimilar(id) {
 	let similar_url = `https://api.themoviedb.org/3/movie/${id}/recommendations?language=en-US&page=1&api_key=7c7034e65c22ade9db6191d62074a4e0`;
 
-	console.log(similarFlag);
+	// console.log(similarFlag);
 
 	let similarNum = 12;
 
 	for (let i = 0; i < similarNum; i++) {
-		getMovies(i, similar_url);
+		getMoviesData(i, similar_url);
 	}
 }
 
@@ -302,7 +310,7 @@ function buildSimilar(data, index) {
 		newElement.src = IMG_PATH + movie_poster;
 	}
 
-	movie_tray.setAttribute("onmouseover", "scrollHorizontally()")
+	movie_tray.setAttribute("onmouseover", "scrollHorizontally()");
 
 	newElement.classList.add("similar-poster-img", "similar-poster" + index);
 	newElement.id = movie_id;
@@ -313,9 +321,24 @@ function buildSimilar(data, index) {
 
 function scrollHorizontally() {
 	const scrollContainer = document.querySelector("#movie-similar");
-	
+
 	scrollContainer.addEventListener("wheel", (evt) => {
 		evt.preventDefault();
 		scrollContainer.scrollLeft += evt.deltaY;
 	});
+}
+
+function startKeywords(id) {
+	keywordFlag = true;
+
+	getMoviesData(
+		0,
+		`https://api.themoviedb.org/3/movie/${id}/keywords?api_key=7c7034e65c22ade9db6191d62074a4e0`
+	);
+}
+
+function buildKeywords(data) {
+	let wordsLength = data["results"].length;
+
+	console.log(wordsLength);
 }

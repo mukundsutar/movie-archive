@@ -1,4 +1,4 @@
-#tab{
+#tab {
     width: 60%;
     height: 40px;
 
@@ -11,13 +11,13 @@
     font-size: 20px;
 }
 
-.tab-ele a{
+.tab-ele a {
     width: 20%;
 
     color: #919191;
     text-decoration: none;
 }
 
-.tab-ele a:hover{
+.tab-ele a:hover {
     color: aliceblue;
 }
