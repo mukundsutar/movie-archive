@@ -11,8 +11,15 @@ let similarFlag = false; //used for sizing similar
 
 // starts as soon as the window loads
 window.onload = async function () {
+	console.log("here");
 	start(API_URL);
 };
+
+// starts as soon as the window loads
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("here");
+	start(API_URL);
+});
 
 //start all code
 async function start(url) {
@@ -25,6 +32,7 @@ async function start(url) {
 async function getMovies(index, url) {
 	let res = await fetch(url);
 	let data = await res.json();
+	console.log(data);
 
 	if (resultFlag) {
 		updatePage(data);
