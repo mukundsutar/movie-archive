@@ -13,15 +13,11 @@
 
 .tab-ele a{
     width: 20%;
-    
+
     color: #919191;
     text-decoration: none;
 }
 
 .tab-ele a:hover{
     color: aliceblue;
-}
-
-.tab-ele :active{
-    
 }
