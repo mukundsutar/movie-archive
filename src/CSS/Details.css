@@ -1,0 +1,50 @@
+.reccom-container {
+    height: 350px;
+
+    padding: 50px 350px;
+
+    display: flex;
+
+    background-color: cadetblue;
+}
+
+.reccom-ele-info {
+    display: flex;
+    flex-grow: 2;
+    flex-direction: column;
+}
+
+.reccom-ele-poster img {
+    height: 350px;
+}
+
+/* individual elements */
+.name {
+    height: 100px;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.year {
+    height: 35px;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.genre {
+    height: 40px;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.plot {
+    height: 100px;
+
+    flex-grow: 2;
+}

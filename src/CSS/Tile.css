@@ -1,0 +1,17 @@
+.tile-container{
+    width: 175px;
+    height: 250px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: crimson;
+}
+
+.tile-poster{
+    width: 150px;
+    height: 225px;
+
+    background-color: coral;
+}
