@@ -1,17 +1,36 @@
-.tile-container{
+.tile-container {
     width: 175px;
-    height: 250px;
-    
+    height: 275px;
+
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
 
     background-color: crimson;
 }
 
-.tile-poster{
+.tile-poster {
     width: 150px;
     height: 225px;
 
+    margin: 15px;
+    margin-bottom: 0px;
+
     background-color: coral;
+}
+
+.tile-poster img {
+    width: 150px;
+    height: 225px;
+}
+
+.tile-name {
+    font-size: 14px;
+    margin-left: 17px;
+}
+
+.tile-year {
+    font-size: 14px;
+    margin-left: 17px;
 }
