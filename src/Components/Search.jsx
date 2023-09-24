@@ -1,18 +1,31 @@
 import React from "react";
 import "../CSS/Search.css";
+import { NavLink } from "react-router-dom";
 
 export default function Search() {
 	return (
 		<>
 			<div className="search">
 				<form>
-					<input className="search-input" type="text" placeholder="Quick search"/>
+					<input
+						className="search-input"
+						type="text"
+						placeholder="Quick search"
+					/>
 				</form>
 
 				<div className="navbar">
-					<div className="Home">Home</div>
-					<div className="popular">Popular</div>
-					<div className="top-rated">Top Rated</div>
+					<div className="Home">
+						<NavLink to={"/"}>Home</NavLink>
+					</div>
+
+					<div className="popular">
+						<NavLink to={"/popular"}>Popular</NavLink>
+					</div>
+					
+					<div className="top-rated">
+						<NavLink to={"/top-rated"}>Top Rated</NavLink>
+					</div>
 				</div>
 			</div>
 		</>
