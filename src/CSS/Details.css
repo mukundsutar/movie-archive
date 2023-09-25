@@ -5,7 +5,9 @@
 
     display: flex;
 
-    background-color: cadetblue;
+    background-color: #1d1d1d;
+    color: aliceblue;
+    font-family: 'Arimo', sans-serif;
 }
 
 .reccom-ele-info {

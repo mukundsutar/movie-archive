@@ -22,7 +22,7 @@ export default function Search() {
 					<div className="popular">
 						<NavLink to={"/popular"}>Popular</NavLink>
 					</div>
-					
+
 					<div className="top-rated">
 						<NavLink to={"/top-rated"}>Top Rated</NavLink>
 					</div>
