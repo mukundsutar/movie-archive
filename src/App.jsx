@@ -13,7 +13,7 @@ export default function App() {
 	useEffect(() => {
 		async function fetchMyAPI() {
 			const url = await fetch(
-				"https://api.themoviedb.org/3/discover/movie?api_key=7c7034e65c22ade9db6191d62074a4e0&page=1&sort_by=popularity.desc"
+				"https://api.themoviedb.org/3/discover/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&page=1&sort_by=popularity.desc"
 			);
 			const data = await url.json();
 
