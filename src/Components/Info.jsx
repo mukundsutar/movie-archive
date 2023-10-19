@@ -1,10 +1,12 @@
 import React from "react";
 import Details from "./Details";
 
-export default function Info() {
+export default function Info({ apiData }) {
+	console.log(window.location.href);
+
 	return (
 		<>
-			<Details />
+			<Details apiData={apiData} />
 			<div className="info-container">
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
 				omnis aliquid debitis repellendus dolore, rerum perspiciatis

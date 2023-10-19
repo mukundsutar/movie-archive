@@ -5,19 +5,41 @@ import Gallery from "./Components/Gallery";
 import TMDB from "./Components/TMDB";
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
+import popularJson from "./docs/popular.json";
 import movieJson from "./docs/movie.json";
+import MoviePage from "./Components/MoviePage";
+import Info from "./Components/Info";
 
 export default function App() {
-	const [apiData, setAPIData] = useState(movieJson);
+	const [apiData, setAPIData] = useState(popularJson);
+	const [movieData, setMovieData] = useState(movieJson);
+	const [movie_id, getMovieID] = useState("");
+
+	const API_KEY = "7c7034e65c22ade9db6191d62074a4e0";
 
 	useEffect(() => {
 		async function fetchMyAPI() {
 			const url = await fetch(
-				"https://api.themoviedb.org/3/discover/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&page=1&sort_by=popularity.desc"
+				"https://api.themoviedb.org/3/discover/movie?\\page=1&sort_by=popularity.desc&api_key=" +
+					API_KEY
 			);
 			const data = await url.json();
 
 			setAPIData(data);
+		}
+
+		fetchMyAPI();
+	}, []);
+
+	useEffect(() => {
+		async function fetchMyAPI() {
+			const url = await fetch(
+				"https://api.themoviedb.org/3/movie/575264?language=en-US&api_key=" +
+					API_KEY
+			);
+			const data = await url.json();
+
+			setMovieData(data);
 		}
 
 		fetchMyAPI();
@@ -33,7 +55,7 @@ export default function App() {
 					element={
 						<>
 							{" "}
-							<Details />
+							<Details apiData={apiData} />
 							<Gallery apiData={apiData} />
 						</>
 					}
@@ -43,7 +65,7 @@ export default function App() {
 					path="/popular"
 					element={
 						<>
-							<Details />
+							<Details apiData={apiData} />
 						</>
 					}
 				/>
@@ -53,8 +75,17 @@ export default function App() {
 					element={
 						<>
 							{" "}
-							<Details />
-							<Gallery />
+							<Details apiData={apiData} />
+							<Gallery apiData={apiData} />
+						</>
+					}
+				/>
+
+				<Route
+					path="/page"
+					element={
+						<>
+							<Info movieData={movieData} />
 						</>
 					}
 				/>
