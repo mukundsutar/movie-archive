@@ -3,14 +3,14 @@ import Header from "./Header";
 import Details from "./Details";
 import Info from "./Info";
 
-export default function MoviePage({apiData}) {
+export default function MoviePage({ apiData }) {
 	return (
 		<>
 			<Header />
 
-			<Details apiData={apiData}/>
+			<Details apiData={apiData} />
 
-			<Info apiData={apiData}/>
+			<Info apiData={apiData} />
 		</>
 	);
 }

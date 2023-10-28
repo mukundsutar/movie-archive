@@ -1,4 +1,6 @@
 .header-container {
+    position: sticky;
+
     height: 60px;
 
     display: flex;
@@ -13,17 +15,23 @@
     justify-content: center;
     align-items: center;
 
-    background-color: beige;
+    background-color: #171717;
 }
 
 .title {
 
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     flex-grow: 2;
 
-    background-color: bisque;
+    background-color: #171717;
+    color: #e2e2e2;
+}
+
+.title a {
+    color: #e2e2e2;
+    text-decoration: none;
 }
 
 .search {
@@ -35,5 +43,10 @@
 
     padding-right: 100px;
 
-    background-color: burlywood;
+    background-color: #171717;
+    color: #e2e2e2;
+}
+
+.logo img {
+    width: 100%;
 }

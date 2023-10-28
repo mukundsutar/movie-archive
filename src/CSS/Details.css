@@ -1,5 +1,5 @@
 .reccom-container {
-    height: 350px;
+    height: 400px;
 
     padding: 50px 350px;
 
@@ -14,10 +14,20 @@
     display: flex;
     flex-grow: 2;
     flex-direction: column;
+
+    font-size: 20px;
+}
+
+.reccom-ele-poster {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .reccom-ele-poster img {
     height: 350px;
+
+    border-radius: 5px;
 }
 
 /* individual elements */
@@ -27,6 +37,8 @@
     display: flex;
     justify-content: start;
     align-items: center;
+
+    font-size: 40px;
 }
 
 .year {
@@ -47,6 +59,22 @@
 
 .plot {
     height: 100px;
+    width: 480px;
 
     flex-grow: 2;
+}
+
+.reccom-ele-poster img:hover {
+    animation: shadow-drop-center .3s ease-in-out both;
+}
+
+@keyframes shadow-drop-center {
+    0% {
+        box-shadow: 0 0 0 0 transparent;
+    }
+
+    100% {
+        box-shadow: 0 0 20px 0 #ffffff59;
+        border-radius: 10px;
+    }
 }

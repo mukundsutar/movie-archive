@@ -18,3 +18,13 @@
     flex-grow: 2;
 }
 
+.navbar a {
+    color: #5B5B66;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.navbar a:hover {
+    color: #e2e2e2;
+}

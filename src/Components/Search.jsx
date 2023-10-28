@@ -16,7 +16,7 @@ export default function Search() {
 
 				<div className="navbar">
 					<div className="Home">
-						<NavLink to={"/"}>Home</NavLink>
+						<NavLink to={"/movie-archive"}>Home</NavLink>
 					</div>
 
 					<div className="popular">
