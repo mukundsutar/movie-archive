@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
 import PageSeek from "../Components/PageSeek";
 import Gallery from "../Components/Gallery";
 import popularJson from "../docs/popular.json";
 
-export default function TopRated({ apiKey }) {
+export default function TopRated() {
 	const [apiData, setAPIData] = useState(popularJson);
 	const [pageNo, setPageNo] = useState(1);
+
+	let API_KEY = process.env.REACT_APP_API_KEY;
 
 	useEffect(() => {
 		async function fetchMyAPI() {
@@ -14,7 +15,7 @@ export default function TopRated({ apiKey }) {
 				"https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=" +
 					pageNo +
 					"&api_key=" +
-					apiKey
+					API_KEY
 			);
 			const data = await url.json();
 
@@ -23,8 +24,6 @@ export default function TopRated({ apiKey }) {
 
 		fetchMyAPI();
 	}, [pageNo]);
-
-	
 
 	return (
 		<>

@@ -8,7 +8,7 @@ export default function Info() {
 
 	let currID = localStorage.getItem("id");
 
-	const API_KEY = "7c7034e65c22ade9db6191d62074a4e0";
+	const API_KEY = process.env.REACT_APP_API_KEY;
 
 	useEffect(() => {
 		async function fetchMyAPI() {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "../CSS/PageSeek.css";
 
 export default function PageSeek({ pageNo, setPageNo }) {
@@ -7,7 +7,7 @@ export default function PageSeek({ pageNo, setPageNo }) {
 		let buttonPrevEle = document.getElementById("prev");
 		let buttonNextEle = document.getElementById("next");
 		if (pageNo == 1) {
-			buttonPrevEle.classList.remove("btn41-43", "btn-41");
+			// buttonPrevEle.classList.remove("btn41-43", "btn-41");
 			buttonPrevEle.style.visibility = "hidden";
 		} else if (pageNo == 2) {
 			// buttonPrevEle.classList.add("btn41-43", "btn-41");

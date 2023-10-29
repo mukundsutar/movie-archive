@@ -15,14 +15,12 @@ import TopRated from "./Components/TopRated";
 export default function App() {
 	const [apiData, setAPIData] = useState(popularJson);
 
-	const API_KEY = "7c7034e65c22ade9db6191d62074a4e0";
-
 	// popular
 	useEffect(() => {
 		async function fetchMyAPI() {
 			const url = await fetch(
 				"https://api.themoviedb.org/3/discover/movie?\\page=1&sort_by=popularity.desc&api_key=" +
-					API_KEY
+					process.env.REACT_APP_API_KEY
 			);
 			const data = await url.json();
 
@@ -73,7 +71,7 @@ export default function App() {
 					path="/top-rated"
 					element={
 						<>
-							<TopRated apiKey={API_KEY} />
+							<TopRated />
 						</>
 					}
 				/>

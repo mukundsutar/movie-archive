@@ -1,8 +1,7 @@
 import "../CSS/Tile.css";
 import { NavLink } from "react-router-dom";
 
-export default function Tile({ index, apiData}) {
-
+export default function Tile({ index, apiData }) {
 	let IMG_PATH = "https://image.tmdb.org/t/p/w1280";
 
 	let moviePoster = IMG_PATH + apiData["results"][index]["poster_path"];
