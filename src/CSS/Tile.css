@@ -59,7 +59,7 @@
 }
 
 .tile-container:hover {
-    animation: shadow-drop-center .3s ease-in-out both;
+    animation: shadow-drop-center .18s ease-out both;
 }
 
 @keyframes shadow-drop-center {

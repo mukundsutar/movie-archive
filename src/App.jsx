@@ -15,7 +15,7 @@ import LoadingBar from "react-top-loading-bar";
 import Timer from "./Components/Timer";
 
 export default function App() {
-	const [progress, setProgress] = useState(0)
+	const [progress, setProgress] = useState(0);
 	const [apiData, setAPIData] = useState(popularJson);
 
 	// popular
@@ -39,10 +39,9 @@ export default function App() {
 				color="#e2e2e2"
 				progress={progress}
 				onLoaderFinished={() => setProgress(0)}
-
 				transitionTime={300}
-				waitingTime={1000}
-				loaderSpeed={1000}
+				waitingTime={700}
+				loaderSpeed={500}
 			/>
 
 			<Header />
@@ -65,7 +64,8 @@ export default function App() {
 					path="/movie-archive"
 					element={
 						<>
-							{" "}<Timer setProgress={setProgress} />
+							{" "}
+							<Timer setProgress={setProgress} />
 							<Details apiData={apiData} />
 							<Gallery apiData={apiData} />
 						</>
@@ -75,7 +75,8 @@ export default function App() {
 				<Route
 					path="/popular"
 					element={
-						<><Timer setProgress={setProgress} />
+						<>
+							<Timer setProgress={setProgress} />
 							<Gallery apiData={apiData} />
 						</>
 					}
@@ -85,7 +86,7 @@ export default function App() {
 					path="/top-rated"
 					element={
 						<>
-						<Timer setProgress={setProgress} />
+							<Timer setProgress={setProgress} />
 							<TopRated />
 						</>
 					}
