@@ -3,7 +3,7 @@ import PageSeek from "../Components/PageSeek";
 import Gallery from "../Components/Gallery";
 import popularJson from "../docs/popular.json";
 
-export default function TopRated() {
+export default function TopRated({ setProgress }) {
 	const [apiData, setAPIData] = useState(popularJson);
 	const [pageNo, setPageNo] = useState(1);
 
@@ -18,12 +18,37 @@ export default function TopRated() {
 					API_KEY
 			);
 			const data = await url.json();
-
 			setAPIData(data);
 		}
 
 		fetchMyAPI();
 	}, [pageNo]);
+
+	// let totaltime = 500;
+	// let time = totaltime / 5;
+	// useEffect(() => {
+	// 	setProgress(0);
+
+	// 	setTimeout(() => {
+	// 		setProgress(20);
+	// 	}, time);
+
+	// 	setTimeout(() => {
+	// 		setProgress(40);
+	// 	}, time * 2);
+
+	// 	setTimeout(() => {
+	// 		setProgress(60);
+	// 	}, time * 3);
+
+	// 	setTimeout(() => {
+	// 		setProgress(80);
+	// 	}, time * 4);
+
+	// 	setTimeout(() => {
+	// 		setProgress(100);
+	// 	}, time * 5);
+	// }, []);
 
 	return (
 		<>

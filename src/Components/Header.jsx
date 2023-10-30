@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../CSS/Header.css";
 import Search from "./Search";
 import redLogoTransparent from "../img/FilmPedia-logos-transparent-red.png";

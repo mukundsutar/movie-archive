@@ -5,7 +5,7 @@ import "../CSS/TMDB.css";
 export default function TMDB() {
 	return (
 		<>
-			<div className="tmdb-container">
+			<div className="tmdb-container" >
 				<img src={tmdb} alt="" />
 			</div>
 		</>

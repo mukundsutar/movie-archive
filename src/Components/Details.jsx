@@ -4,7 +4,7 @@ import movieJson from "../docs/movie.json";
 import poster from "../img/spider-man ATSV.jpg";
 import { useState, useEffect } from "react";
 
-export default function Details({ apiData }) {
+export default function Details({ apiData, setProgress }) {
 	const [movieData, setMovieData] = useState(movieJson);
 
 	// algorith to find most popular movie currently
@@ -26,8 +26,6 @@ export default function Details({ apiData }) {
 			index = i;
 		}
 	}
-
-	console.log(apiData["results"][index]["original_title"] + " " + max);
 
 	let IMG_PATH = "https://image.tmdb.org/t/p/w1280";
 	let movieID = apiData["results"][index]["id"];
