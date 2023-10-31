@@ -1,0 +1,24 @@
+.attribution-container {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: #171717;
+    color: #e2e2e2;
+}
+
+.attribution-container .attribution-love {
+    margin: 10px 0px;
+    margin-top: 30px;
+}
+
+.attribution-container .attribution-name {
+    margin: 0px;
+    margin-bottom: 30px;
+}
+
+.attribution-container:hover  span {
+    color: #e31b23 ;
+}

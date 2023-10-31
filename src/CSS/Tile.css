@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+
+.tile-container {
+    width: 183px;
+    height: 285px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #353535;
+    color: aliceblue;
+    font-family: 'Arimo', sans-serif;
+    border-radius: 5px;
+}
+
+.tile-poster {
+    width: 150px;
+    height: 225px;
+
+    margin: 15px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+
+    /* background-color: coral; */
+}
+
+.tile-poster img {
+    width: 150px;
+    height: 225px;
+    border-radius: 3px;
+}
+
+.tile-name {
+    width: 85%;
+
+    margin-left: 15px;
+
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tile-name:hover {
+    color: #5B5B66;
+}
+
+.tile-year {
+    margin-left: 15px;
+
+    font-size: 14px;
+}
+
+.navlink-tile {
+    color: aliceblue;
+    width: 183px;
+}
+
+.tile-container:hover {
+    animation: shadow-drop-center .18s ease-out both;
+}
+
+@keyframes shadow-drop-center {
+    0% {
+        box-shadow: 0 0 0 0 transparent;
+    }
+
+    100% {
+        box-shadow: 0 0 20px 0 #ffffff59;
+        border-radius: 10px;
+    }
+}

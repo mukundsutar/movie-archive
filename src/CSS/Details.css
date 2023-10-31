@@ -1,0 +1,80 @@
+.reccom-container {
+    height: 400px;
+
+    padding: 50px 350px;
+
+    display: flex;
+
+    background-color: #1d1d1d;
+    color: aliceblue;
+    font-family: 'Arimo', sans-serif;
+}
+
+.reccom-ele-info {
+    display: flex;
+    flex-grow: 2;
+    flex-direction: column;
+
+    font-size: 20px;
+}
+
+.reccom-ele-poster {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reccom-ele-poster img {
+    height: 350px;
+
+    border-radius: 5px;
+}
+
+/* individual elements */
+.name {
+    height: 100px;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    font-size: 40px;
+}
+
+.year {
+    height: 35px;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.genre {
+    height: 40px;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.plot {
+    height: 100px;
+    width: 480px;
+
+    flex-grow: 2;
+}
+
+.reccom-ele-poster img:hover {
+    animation: shadow-drop-center .3s ease-in-out both;
+}
+
+@keyframes shadow-drop-center {
+    0% {
+        box-shadow: 0 0 0 0 transparent;
+    }
+
+    100% {
+        box-shadow: 0 0 20px 0 #ffffff59;
+        border-radius: 10px;
+    }
+}
