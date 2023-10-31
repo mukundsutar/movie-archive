@@ -55,8 +55,7 @@ export default function App() {
 					path="/"
 					element={
 						<>
-						{/* <Navigate exact from="/" to="/movie-archive" /> */}
-							{" "}
+							{/* <Navigate exact from="/" to="/movie-archive" /> */}{" "}
 							<Timer setProgress={setProgress} />
 							<Details apiData={apiData} />
 							<Gallery apiData={apiData} />
@@ -68,8 +67,11 @@ export default function App() {
 					path="/movie-archive"
 					element={
 						<>
-						<Navigate exact from="/movie-archive/movie-archive" to="/movie-archive" />
-							{" "}
+							<Navigate
+								exact
+								from="/movie-archive/movie-archive"
+								to="/movie-archive"
+							/>{" "}
 							<Timer setProgress={setProgress} />
 							<Details apiData={apiData} />
 							<Gallery apiData={apiData} />
@@ -107,7 +109,7 @@ export default function App() {
 				/>
 			</Routes>
 
-			<Attribution/>
+			<Attribution />
 
 			{/* <TMDB /> */}
 		</>
