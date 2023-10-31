@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import PageSeek from "../Components/PageSeek";
 import Gallery from "../Components/Gallery";
 import popularJson from "../docs/popular.json";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
-export default function TopRated({ setProgress }) {
-	const [apiData, setAPIData] = useState(popularJson);
+export default function TopRated() {
+	const [apiData, setAPIData] = useState();
 	const [pageNo, setPageNo] = useState(1);
 
 	let API_KEY = process.env.REACT_APP_API_KEY;

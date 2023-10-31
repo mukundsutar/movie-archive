@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import Tile from "./Tile";
 import "../CSS/Gallery.css";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export default function Gallery({ apiData }) {
 	// Create an array of JSX elements for the Tile components

@@ -13,10 +13,13 @@ import PageSeek from "./Components/PageSeek";
 import TopRated from "./Components/TopRated";
 import LoadingBar from "react-top-loading-bar";
 import Timer from "./Components/Timer";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import SkeletonDetails from "./Components/SkeletonDetails";
 
 export default function App() {
 	const [progress, setProgress] = useState(0);
-	const [apiData, setAPIData] = useState(popularJson);
+	const [apiData, setAPIData] = useState();
 
 	// popular
 	useEffect(() => {
@@ -47,7 +50,7 @@ export default function App() {
 			<Header />
 
 			<Routes>
-				<Route
+				{/* <Route
 					path="/"
 					element={
 						<>
@@ -58,7 +61,7 @@ export default function App() {
 							<Gallery apiData={apiData} />
 						</>
 					}
-				/>
+				/> */}
 
 				<Route
 					path="/movie-archive"
