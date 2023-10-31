@@ -16,7 +16,7 @@ export default function Header() {
 		<>
 			<div className="header-container">
 				<div className="logo">
-					<NavLink to={"/movie-archive"}>
+					<NavLink to={"/"}>
 						<img src={whiteLogoTransparent} alt="" srcSet="" />
 					</NavLink>
 				</div>

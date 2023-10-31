@@ -2,78 +2,64 @@ import React from "react";
 import "../CSS/Info.css";
 import movieJson from "../docs/movie.json";
 import { useState, useEffect } from "react";
+import Details from "./Details";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export default function Info() {
-	const [movieData, setMovieData] = useState(movieJson);
+	const [movieData, setMovieData] = useState();
 
 	let currID = localStorage.getItem("id");
 
-	const API_KEY = process.env.REACT_APP_API_KEY;
-
 	useEffect(() => {
-		async function fetchMyAPI() {
+		async function fetchMovieAPI() {
 			const url = await fetch(
 				"https://api.themoviedb.org/3/movie/" +
 					currID +
 					"?language=en-US&api_key=" +
-					API_KEY
+					process.env.REACT_APP_API_KEY
 			);
 			const data = await url.json();
 
 			setMovieData(data);
 		}
 
-		fetchMyAPI();
+		fetchMovieAPI();
 	}, [currID]);
-
-	// poster path
-	let IMG_PATH = "https://image.tmdb.org/t/p/w1280";
-
-	let moviePoster = IMG_PATH + movieData["poster_path"];
-	let movieBackdrop = IMG_PATH + movieData["backdrop_path"];
-	let movieName = movieData["original_title"];
-	let movieYear = movieData["release_date"];
-	let movieTagline = movieData["tagline"];
-	let moviePlot = movieData["overview"];
-	let movieGenre = movieData["genres"];
-
-	// trim movie date year
-	movieYear = movieYear.substring(0, 4);
-
-	// fetching and proccessing movie data
-	let movie_genre = [];
-	for (let i = 0; i < movieGenre.length; i++) {
-		movie_genre.push(movieData["genres"][i]["name"]);
-	}
-
-	let genreStr = "";
-	for (let i = 0; i < movie_genre.length; i++) {
-		genreStr = genreStr.concat(movie_genre[i]);
-		if (i < movie_genre.length - 1) {
-			genreStr = genreStr.concat(" / ");
-		}
-	}
 
 	return (
 		<>
-			<div className="info-container reccom-container">
-				<div className="reccom-ele reccom-ele-info">
-					<div className="name">{movieName}</div>
-					<div className="year">{movieYear}</div>
-					<div className="genre">{genreStr}</div>
-					<div className="plot">{movieTagline}</div>
-				</div>
+			<Details movieInfoData={movieData} />
 
-				<div className="reccom-ele reccom-ele-poster">
-					<img src={moviePoster} alt="" />
-				</div>
-			</div>
+			<SkeletonTheme baseColor="#404040" highlightColor="#525252">
+				{movieData && (
+					<div className="info-container-2">
+						<div className="info-2-ele">
+							{movieData.overview || <Skeleton width={100} />}
+						</div>
 
-			<div className="info-container-2">
-				<div className="info-2-ele">{moviePlot}</div>
+						<br />
 
-				<div className="info-2-ele">vote</div>
-			</div>
+						<div className="info-2-ele">
+							Audience Score: {" "}
+							{movieData.vote_average || <Skeleton width={100} />}
+						</div>
+					</div>
+				)}
+
+				{!movieData && (
+					<div className="info-container-2">
+						<div className="info-2-ele">
+							<Skeleton count={5} />
+						</div>
+						<br />
+
+						<div className="info-2-ele">
+							<Skeleton width={100} />
+						</div>
+					</div>
+				)}
+			</SkeletonTheme>
 		</>
 	);
 }

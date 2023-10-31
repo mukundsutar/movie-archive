@@ -50,23 +50,24 @@ export default function App() {
 			<Header />
 
 			<Routes>
-				{/* <Route
+				<Route
 					path="/"
 					element={
 						<>
+						{/* <Navigate exact from="/" to="/movie-archive" /> */}
 							{" "}
-							<Navigate exact from="/movie-archive" to="/" />
 							<Timer setProgress={setProgress} />
 							<Details apiData={apiData} />
 							<Gallery apiData={apiData} />
 						</>
 					}
-				/> */}
+				/>
 
 				<Route
 					path="/movie-archive"
 					element={
 						<>
+						<Navigate exact from="/movie-archive/movie-archive" to="/movie-archive" />
 							{" "}
 							<Timer setProgress={setProgress} />
 							<Details apiData={apiData} />

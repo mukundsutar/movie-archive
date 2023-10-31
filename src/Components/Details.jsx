@@ -6,9 +6,10 @@ import { useState, useEffect } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-export default function Details({ apiData }) {
+export default function Details({ apiData, movieInfoData }) {
 	const [movieData, setMovieData] = useState();
-	const [isLoading, changeLoadState] = useState(true);
+
+	// setID(apiData||movieInfoData)
 
 	// algorith to find most popular movie currently
 	let max = Number.MIN_SAFE_INTEGER;
@@ -26,7 +27,6 @@ export default function Details({ apiData }) {
 		genreStr;
 
 	if (apiData) {
-
 		for (let i = 0; i < apiData["results"].length; i++) {
 			let popularity = apiData["results"][i]["popularity"];
 			let averageVotes = apiData["results"][i]["vote_average"];
@@ -49,17 +49,33 @@ export default function Details({ apiData }) {
 		movieDate = apiData["results"][index]["release_date"];
 		movieYear = movieDate.substring(0, 4);
 		moviePlot = apiData["results"][index]["overview"];
+	} else if (movieInfoData) {
+		// poster path
+		IMG_PATH = "https://image.tmdb.org/t/p/w1280";
+
+		moviePoster = IMG_PATH + movieInfoData["poster_path"];
+		movieBackdrop = IMG_PATH + movieInfoData["backdrop_path"];
+		movieName = movieInfoData["original_title"];
+		movieID = movieInfoData["id"];
+		movieYear = movieInfoData["release_date"];
+		let movieTagline = movieInfoData["tagline"];
+		moviePlot = movieInfoData["overview"];
+
+		// trim movie date year
+		movieYear = movieYear.substring(0, 4);
+
+		// setMovieData(movieInfoData);
 	}
 
 	// // fetching and proccessing movie data
 	if (movieData) {
-		let movieGenre = movieData["genres"];
 		let movie_genre = [];
+		let movieGenre = movieData["genres"];
 		if (movieGenre) {
 			for (let i = 0; i < movieGenre.length; i++) {
 				movie_genre.push(movieData["genres"][i]["name"]);
 			}
-	
+
 			genreStr = "";
 			for (let i = 0; i < movie_genre.length; i++) {
 				genreStr = genreStr.concat(movie_genre[i]);
