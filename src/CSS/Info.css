@@ -2,6 +2,34 @@
     padding: 50px 350px;
 
     background-color: #1d1d1d;
-    color: aliceblue;
+    color: #e2e2e2;
     font-family: 'Arimo', sans-serif;
+}
+
+.info-2-keyword h3{
+    margin-top: 0px;
+}
+
+.info-2-word{
+    height: 30px;
+    width: max-content;
+
+    padding: 0px 10px;
+    margin: 5px 5px;
+    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #404040;
+    border-radius: 5px;
+}
+
+.keyword-skeleton{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.word-skeleton{
+    margin: 5px;
 }

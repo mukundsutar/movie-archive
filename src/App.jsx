@@ -15,7 +15,6 @@ import LoadingBar from "react-top-loading-bar";
 import Timer from "./Components/Timer";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import SkeletonDetails from "./Components/SkeletonDetails";
 import Attribution from "./Components/Attribution";
 
 export default function App() {
