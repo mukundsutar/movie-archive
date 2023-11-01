@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/movie-archive/static/css/main.96700ff6.css",
-    "main.js": "/movie-archive/static/js/main.e598c3a2.js",
+    "main.css": "/movie-archive/static/css/main.03a547cc.css",
+    "main.js": "/movie-archive/static/js/main.3c43c742.js",
     "static/media/spider-man ATSV.jpg": "/movie-archive/static/media/spider-man ATSV.18d6e53f5a38108339a7.jpg",
     "static/media/FilmPedia-logos-red.jpeg": "/movie-archive/static/media/FilmPedia-logos-red.590f3fbb7e13cb93fa53.jpeg",
     "static/media/FilmPedia-logos-white.jpeg": "/movie-archive/static/media/FilmPedia-logos-white.d810766bf1258200b169.jpeg",
@@ -9,11 +9,11 @@
     "static/media/FilmPedia-logos-transparent-white.png": "/movie-archive/static/media/FilmPedia-logos-transparent-white.659305cd2adc0d770b3e.png",
     "static/media/TMDB-logo.svg": "/movie-archive/static/media/TMDB-logo.caee745762db3e030d38ebb5a167ae05.svg",
     "index.html": "/movie-archive/index.html",
-    "main.96700ff6.css.map": "/movie-archive/static/css/main.96700ff6.css.map",
-    "main.e598c3a2.js.map": "/movie-archive/static/js/main.e598c3a2.js.map"
+    "main.03a547cc.css.map": "/movie-archive/static/css/main.03a547cc.css.map",
+    "main.3c43c742.js.map": "/movie-archive/static/js/main.3c43c742.js.map"
   },
   "entrypoints": [
-    "static/css/main.96700ff6.css",
-    "static/js/main.e598c3a2.js"
+    "static/css/main.03a547cc.css",
+    "static/js/main.3c43c742.js"
   ]
 }
