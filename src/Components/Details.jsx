@@ -10,8 +10,6 @@ import { NavLink } from "react-router-dom";
 export default function Details({ apiData, movieInfoData }) {
 	const [movieData, setMovieData] = useState();
 
-	// setID(apiData||movieInfoData)
-
 	// algorith to find most popular movie currently
 	let max = Number.MIN_SAFE_INTEGER;
 	let index = 0;
@@ -24,7 +22,7 @@ export default function Details({ apiData, movieInfoData }) {
 		movieName,
 		movieDate,
 		movieYear,
-		moviePlot,
+		movieTagline,
 		genreStr;
 
 	if (apiData) {
@@ -44,12 +42,12 @@ export default function Details({ apiData, movieInfoData }) {
 
 		IMG_PATH = "https://image.tmdb.org/t/p/w1280";
 		movieID = apiData["results"][index]["id"];
+		window.localStorage.setItem("id", movieID);
 		moviePoster = IMG_PATH + apiData["results"][index]["poster_path"];
 		movieBackdrop = IMG_PATH + apiData["results"][index]["backdrop_path"];
 		movieName = apiData["results"][index]["original_title"];
 		movieDate = apiData["results"][index]["release_date"];
 		movieYear = movieDate.substring(0, 4);
-		moviePlot = apiData["results"][index]["overview"];
 	} else if (movieInfoData) {
 		// poster path
 		IMG_PATH = "https://image.tmdb.org/t/p/w1280";
@@ -60,7 +58,7 @@ export default function Details({ apiData, movieInfoData }) {
 		movieID = movieInfoData["id"];
 		movieYear = movieInfoData["release_date"];
 		let movieTagline = movieInfoData["tagline"];
-		moviePlot = movieInfoData["overview"];
+		movieTagline = movieInfoData["overview"];
 
 		// trim movie date year
 		// movieYear = movieYear.substring(0, 4);
@@ -85,6 +83,8 @@ export default function Details({ apiData, movieInfoData }) {
 				}
 			}
 		}
+
+		movieTagline = movieData["tagline"];
 	}
 
 	// fetch additional details
@@ -110,7 +110,9 @@ export default function Details({ apiData, movieInfoData }) {
 				<div className="reccom-container">
 					<div className="reccom-ele reccom-ele-info">
 						<div className="name">
-							{movieName || <Skeleton width={475} />}
+							<NavLink to={"/movie"}>
+								{movieName || <Skeleton width={475} />}
+							</NavLink>
 						</div>
 						<div className="year">
 							{movieYear || <Skeleton width={100} />}
@@ -119,12 +121,16 @@ export default function Details({ apiData, movieInfoData }) {
 							{genreStr || <Skeleton width={250} />}
 						</div>
 						<div className="plot">
-							{moviePlot || <Skeleton count={4} />}
+							{movieTagline || <Skeleton count={4} />}
 						</div>
 					</div>
 
 					<div className="reccom-ele reccom-ele-poster">
-						{moviePoster && <img src={moviePoster} alt="" />}
+						{moviePoster && (
+							<NavLink to={"/movie"}>
+								<img src={moviePoster} alt="" />
+							</NavLink>
+						)}
 
 						{!moviePoster && (
 							<Skeleton
