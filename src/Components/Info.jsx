@@ -76,14 +76,14 @@ export default function Info() {
 								<br />
 
 								<div className="info-2-ele">
-									Budget: {movieData.budget}
+									Budget: ${movieData.budget} &#40;USD&#41;
 								</div>
 
 								<br />
 								<br />
 
 								<div className="info-2-ele">
-									Revenue: {movieData.revenue}
+									Revenue: ${movieData.revenue} &#40;USD&#41;
 								</div>
 							</div>
 						)}
