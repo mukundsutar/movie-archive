@@ -11,7 +11,7 @@ export default function Gallery({ apiData }) {
 		{ length: numberOfTiles },
 		(
 			_,
-			index, //_, and index optional
+			index //_, and index optional
 		) => (
 			<Tile key={index} index={index} apiData={apiData} /> // to provide a unique key for each Tile
 		)
