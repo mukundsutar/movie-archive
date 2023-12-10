@@ -6,169 +6,175 @@ import { useState, useEffect } from "react";
 import Details from "./Details";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useAtom } from "jotai";
+import { currMovieID } from "./Tile";
 
 export default function Info() {
-	const [movieData, setMovieData] = useState();
-	const [movieKeyword, setMovieKeyword] = useState();
+    const [movieData, setMovieData] = useState();
+    const [movieKeyword, setMovieKeyword] = useState();
+    const [currMovieIDj, setCurrMovieIDj] = useAtom(currMovieID);
 
-	let currID = localStorage.getItem("id");
-	let movieLang;
+    // let currID = localStorage.getItem("id");
+    let currID = currMovieIDj;
+    let movieLang;
 
-	useEffect(() => {
-		async function fetchMovieAPI() {
-			const url = await fetch(
-				"https://api.themoviedb.org/3/movie/" +
-					currID +
-					"?language=en-US&api_key=" +
-					process.env.REACT_APP_API_KEY
-			);
-			const data = await url.json();
+    useEffect(() => {
+        async function fetchMovieAPI() {
+            const url = await fetch(
+                "https://api.themoviedb.org/3/movie/" +
+                    currID +
+                    "?language=en-US&api_key=" +
+                    process.env.REACT_APP_API_KEY
+            );
+            const data = await url.json();
 
-			setMovieData(data);
-		}
+            setMovieData(data);
+        }
 
-		async function fetchKeywordAPI() {
-			const url = await fetch(
-				"https://api.themoviedb.org/3/movie/" +
-					currID +
-					"/keywords?language=en-US&api_key=" +
-					process.env.REACT_APP_API_KEY
-			);
-			const data = await url.json();
+        async function fetchKeywordAPI() {
+            const url = await fetch(
+                "https://api.themoviedb.org/3/movie/" +
+                    currID +
+                    "/keywords?language=en-US&api_key=" +
+                    process.env.REACT_APP_API_KEY
+            );
+            const data = await url.json();
 
-			setMovieKeyword(data);
-		}
+            setMovieKeyword(data);
+        }
 
-		fetchMovieAPI();
-		fetchKeywordAPI();
-	}, [currID]);
+        fetchMovieAPI();
+        fetchKeywordAPI();
+    }, [currID]);
 
-	if (movieData) {
-		languageCodes.language.map((index) => {
-			if (index.code == movieData.original_language) {
-				movieLang = index.name;
-			}
-		});
-	}
+    if (movieData) {
+        languageCodes.language.map((index) => {
+            if (index.code == movieData.original_language) {
+                movieLang = index.name;
+            }
+        });
+    }
 
-	return (
-		<>
-			<Details movieInfoData={movieData} />
+    return (
+        <>
+            <Details movieInfoData={movieData} />
 
-			<SkeletonTheme baseColor="#404040" highlightColor="#525252">
-				{movieData && (
-					<div className="info-container-2">
-						<div className="info-2-ele">
-							Overview: <br />
-							{movieData.overview || <Skeleton width={100} />}
-						</div>
+            <SkeletonTheme baseColor="#404040" highlightColor="#525252">
+                {movieData && (
+                    <div className="info-container-2">
+                        <div className="info-2-ele">
+                            Overview: <br />
+                            {movieData.overview || <Skeleton width={100} />}
+                        </div>
 
-						<br />
-						<br />
+                        <br />
+                        <br />
 
-						<div className="info-2-ele">
-							Status: {movieData.status}
-						</div>
+                        <div className="info-2-ele">
+                            Status: {movieData.status}
+                        </div>
 
-						{movieData.budget != 0 && (
-							<div className="budget-container">
-								<br />
-								<br />
+                        {movieData.budget != 0 && (
+                            <div className="budget-container">
+                                <br />
+                                <br />
 
-								<div className="info-2-ele">
-									Budget: ${movieData.budget} &#40;USD&#41;, ₹{movieData.budget*83} 
-								</div>
+                                <div className="info-2-ele">
+                                    Budget: ${movieData.budget} &#40;USD&#41;, ₹
+                                    {movieData.budget * 83}
+                                </div>
 
-								<br />
-								<br />
+                                <br />
+                                <br />
 
-								<div className="info-2-ele">
-									Revenue: ${movieData.revenue} &#40;USD&#41;, ₹{movieData.revenue*83}
-								</div>
-							</div>
-						)}
+                                <div className="info-2-ele">
+                                    Revenue: ${movieData.revenue} &#40;USD&#41;,
+                                    ₹{movieData.revenue * 83}
+                                </div>
+                            </div>
+                        )}
 
-						<br />
-						<br />
+                        <br />
+                        <br />
 
-						{movieData && (
-							<div className="info-2-ele">
-								Original Language: {movieLang}
-							</div>
-						)}
+                        {movieData && (
+                            <div className="info-2-ele">
+                                Original Language: {movieLang}
+                            </div>
+                        )}
 
-						<br />
-						<br />
+                        <br />
+                        <br />
 
-						<div className="info-2-ele">
-							Audience Score:{" "}
-							{Math.round(movieData.vote_average * 10) / 10 || (
-								<Skeleton width={100} />
-							)}
-						</div>
+                        <div className="info-2-ele">
+                            Audience Score:{" "}
+                            {Math.round(movieData.vote_average * 10) / 10 || (
+                                <Skeleton width={100} />
+                            )}
+                        </div>
 
-						<br />
-						<br />
+                        <br />
+                        <br />
 
-						<div className="info-2-keyword">
-							<h3>Keywords:</h3>
+                        <div className="info-2-keyword">
+                            <h3>Keywords:</h3>
 
-							{movieKeyword &&
-								movieKeyword.keywords.map((word) => (
-									<span
-										className="info-2-container-words"
-										key={word.id}
-									>
-										<span className="info-2-word">
-											#{word.name}
-										</span>
-										&nbsp;
-									</span>
-								))}
-						</div>
-					</div>
-				)}
+                            {movieKeyword &&
+                                movieKeyword.keywords.map((word) => (
+                                    <span
+                                        className="info-2-container-words"
+                                        key={word.id}
+                                    >
+                                        <span className="info-2-word">
+                                            #{word.name}
+                                        </span>
+                                        &nbsp;
+                                    </span>
+                                ))}
+                        </div>
+                    </div>
+                )}
 
-				{!movieData && (
-					<div className="info-container-2">
-						<div className="info-2-ele">
-							<Skeleton count={5} />
-						</div>
-						<br />
+                {!movieData && (
+                    <div className="info-container-2">
+                        <div className="info-2-ele">
+                            <Skeleton count={5} />
+                        </div>
+                        <br />
 
-						<div className="info-2-ele">
-							<Skeleton width={100} />
-						</div>
+                        <div className="info-2-ele">
+                            <Skeleton width={100} />
+                        </div>
 
-						<div className="info-2-ele">
-							<Skeleton width={100} />
-						</div>
+                        <div className="info-2-ele">
+                            <Skeleton width={100} />
+                        </div>
 
-						<div className="info-2-ele">
-							<Skeleton width={100} />
-						</div>
+                        <div className="info-2-ele">
+                            <Skeleton width={100} />
+                        </div>
 
-						<div className="info-2-ele">
-							<Skeleton width={100} />
-							<div className="keyword-skeleton">
-								{Array.from(
-									{ length: Math.random() * (10 - 5) + 5 },
-									(index) => (
-										<Skeleton
-											key={index}
-											className="word-skeleton"
-											width={
-												Math.random() * (150 - 80) + 80
-											}
-											height={30}
-										/>
-									)
-								)}
-							</div>
-						</div>
-					</div>
-				)}
-			</SkeletonTheme>
-		</>
-	);
+                        <div className="info-2-ele">
+                            <Skeleton width={100} />
+                            <div className="keyword-skeleton">
+                                {Array.from(
+                                    { length: Math.random() * (10 - 5) + 5 },
+                                    (_, index) => (
+                                        <Skeleton
+                                            key={index}
+                                            className="word-skeleton"
+                                            width={
+                                                Math.random() * (150 - 80) + 80
+                                            }
+                                            height={30}
+                                        />
+                                    )
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </SkeletonTheme>
+        </>
+    );
 }

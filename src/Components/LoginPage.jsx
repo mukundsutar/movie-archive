@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "../CSS/LoginPage.css";
 import { Navigate } from "react-router-dom";
+import { atom, useAtom } from "jotai";
+export const loginState = atom(false);
 
-export default function LoginPage() {
+export default function LoginPage({}) {
     const [userName, setUserName] = useState("");
     const [userPassword, setUserPassword] = useState("123");
     const [auth, setAuth] = useState(false);
@@ -11,6 +13,7 @@ export default function LoginPage() {
         name: "",
         password: "",
     });
+    const [loginStateCheck, setLoginState] = useAtom(loginState);
 
     const user = [{ name: "asd", password: "123" }];
 
@@ -30,6 +33,7 @@ export default function LoginPage() {
                 console.log("Accepted");
                 setUserName("");
                 setRedirect(true);
+                setLoginState(true);
             } else {
                 setAuth(true);
             }

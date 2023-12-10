@@ -3,7 +3,7 @@ import Header from "./Components/Header";
 import Details from "./Components/Details";
 import Gallery from "./Components/Gallery";
 import TMDB from "./Components/TMDB";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, redirect } from "react-router-dom";
 import { useState, useEffect } from "react";
 import popularJson from "./docs/popular.json";
 import movieJson from "./docs/movie.json";
@@ -16,7 +16,8 @@ import Timer from "./Components/Timer";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import Attribution from "./Components/Attribution";
-import LoginPage from "./Components/LoginPage";
+import LoginPage, { loginState } from "./Components/LoginPage";
+import { useAtom } from "jotai";
 
 export default function App() {
     const [progress, setProgress] = useState(0);
@@ -36,6 +37,10 @@ export default function App() {
 
         fetchMyAPI();
     }, []);
+
+    const [loginStateCheck] = useAtom(loginState);
+
+    console.log(loginStateCheck);
 
     return (
         <>
@@ -64,7 +69,12 @@ export default function App() {
                     path="/"
                     element={
                         <>
-                            <Navigate exact from="/" to="/login" />{" "}
+                            {!loginStateCheck && (
+                                <Navigate exact from="/" to="/login" />
+                            )}
+                            {loginStateCheck && (
+                                <Navigate exact from="/login" to="/" />
+                            )}
                             <Timer setProgress={setProgress} />
                             <Details apiData={apiData} />
                             <Gallery apiData={apiData} />
