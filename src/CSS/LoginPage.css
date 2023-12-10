@@ -1,0 +1,83 @@
+.login-page-container {
+    box-sizing: border-box;
+    width: 100svw;
+    height: 74.75svh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container,
+.register-container {
+    box-sizing: border-box;
+    width: 300px;
+    height: 500px;
+
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: aquamarine;
+}
+
+.login-container p,
+.register-container p {
+    margin-left: 30px;
+    margin-right: 30px;
+
+    font-size: 20px;
+}
+
+.login-container input,
+.register-container input {
+    height: 30px;
+
+    margin-top: 5px;
+}
+
+.login-container button,
+.register-container button {
+    height: 30px;
+
+    margin-top: 5px;
+}
+
+.login-container .login-here,
+.register-container .register-here {
+    margin-top: 20px;
+}
+
+.login-container .login-forgot,
+.register-container .register-forgot {
+    margin-bottom: 40px;
+}
+
+.login-title,
+.register-title {
+    margin-top: 40px;
+
+    font-weight: bold;
+}
+
+.login-text,
+.register-text {
+    flex-grow: 2;
+}
+
+.login-text span,
+.register-text span {
+    text-decoration: underline;
+}
+
+.register-container {
+    margin-left: 10px;
+}
+
+.wrong{
+    margin: 0px 20px !important;
+
+    font-size: 15px !important;
+    color: red;
+}

@@ -16,101 +16,111 @@ import Timer from "./Components/Timer";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import Attribution from "./Components/Attribution";
+import LoginPage from "./Components/LoginPage";
 
 export default function App() {
-	const [progress, setProgress] = useState(0);
-	const [apiData, setAPIData] = useState();
+    const [progress, setProgress] = useState(0);
+    const [apiData, setAPIData] = useState();
 
-	// popular
-	useEffect(() => {
-		async function fetchMyAPI() {
-			const url = await fetch(
-				"https://api.themoviedb.org/3/discover/movie?\\page=1&sort_by=popularity.desc&api_key=" +
-					process.env.REACT_APP_API_KEY
-			);
-			const data = await url.json();
+    // popular
+    useEffect(() => {
+        async function fetchMyAPI() {
+            const url = await fetch(
+                "https://api.themoviedb.org/3/discover/movie?\\page=1&sort_by=popularity.desc&api_key=" +
+                    process.env.REACT_APP_API_KEY
+            );
+            const data = await url.json();
 
-			setAPIData(data);
-		}
+            setAPIData(data);
+        }
 
-		fetchMyAPI();
-	}, []);
+        fetchMyAPI();
+    }, []);
 
-	return (
-		<>
-			<LoadingBar
-				color="#e2e2e2"
-				progress={progress}
-				onLoaderFinished={() => setProgress(0)}
-				transitionTime={300}
-				waitingTime={700}
-				loaderSpeed={500}
-			/>
+    return (
+        <>
+            <LoadingBar
+                color="#e2e2e2"
+                progress={progress}
+                onLoaderFinished={() => setProgress(0)}
+                transitionTime={300}
+                waitingTime={700}
+                loaderSpeed={500}
+            />
 
-			<Header />
+            <Header />
 
-			<Routes>
-				<Route
-					path="/"
-					element={
-						<>
-							{/* <Navigate exact from="/" to="/movie-archive" /> */}{" "}
-							<Timer setProgress={setProgress} />
-							<Details apiData={apiData} />
-							<Gallery apiData={apiData} />
-						</>
-					}
-				/>
+            <Routes>
+                <Route
+                    path="/login"
+                    element={
+                        <>
+                            <LoginPage />
+                        </>
+                    }
+                />
 
-				<Route
-					path="/movie-archive"
-					element={
-						<>
-							<Navigate
-								exact
-								from="/movie-archive/movie-archive"
-								to="/movie-archive"
-							/>{" "}
-							<Timer setProgress={setProgress} />
-							<Details apiData={apiData} />
-							<Gallery apiData={apiData} />
-						</>
-					}
-				/>
+                <Route
+                    path="/"
+                    element={
+                        <>
+                            <Navigate exact from="/" to="/login" />{" "}
+                            <Timer setProgress={setProgress} />
+                            <Details apiData={apiData} />
+                            <Gallery apiData={apiData} />
+                        </>
+                    }
+                />
 
-				<Route
-					path="/popular"
-					element={
-						<>
-							<Timer setProgress={setProgress} />
-							<Gallery apiData={apiData} />
-						</>
-					}
-				/>
+                <Route
+                    path="/movie-archive"
+                    element={
+                        <>
+                            <Navigate
+                                exact
+                                from="/movie-archive/movie-archive"
+                                to="/movie-archive"
+                            />{" "}
+                            <Timer setProgress={setProgress} />
+                            <Details apiData={apiData} />
+                            <Gallery apiData={apiData} />
+                        </>
+                    }
+                />
 
-				<Route
-					path="/top-rated"
-					element={
-						<>
-							<Timer setProgress={setProgress} />
-							<TopRated />
-						</>
-					}
-				/>
+                <Route
+                    path="/popular"
+                    element={
+                        <>
+                            <Timer setProgress={setProgress} />
+                            <Gallery apiData={apiData} />
+                        </>
+                    }
+                />
 
-				<Route
-					path="/movie"
-					element={
-						<>
-							<Info />
-						</>
-					}
-				/>
-			</Routes>
+                <Route
+                    path="/top-rated"
+                    element={
+                        <>
+                            <Timer setProgress={setProgress} />
+                            <TopRated />
+                        </>
+                    }
+                />
 
-			<Attribution />
+                <Route
+                    path="/movie"
+                    element={
+                        <>
+                            <Info />
+                        </>
+                    }
+                />
+            </Routes>
 
-			{/* <TMDB /> */}
-		</>
-	);
+            <Attribution />
+
+            {/* <TMDB /> */}
+        </>
+    );
 }
