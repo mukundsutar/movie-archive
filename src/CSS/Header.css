@@ -11,6 +11,8 @@
 .logo {
     width: 225px;
 
+    padding: 20px;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,8 +20,13 @@
     background-color: #171717;
 }
 
-.title {
+.logo a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.title {
     display: flex;
     justify-content: start;
     align-items: center;
@@ -49,4 +56,13 @@
 
 .logo img {
     width: 100%;
+}
+
+@media only screen and (max-width: 650) {
+    .logo {
+        width: 100px;
+
+        display: flex;
+        flex-grow: 2;
+    }
 }

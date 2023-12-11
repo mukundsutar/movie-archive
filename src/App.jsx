@@ -5,15 +5,10 @@ import Gallery from "./Components/Gallery";
 import TMDB from "./Components/TMDB";
 import { Routes, Route, Navigate, redirect } from "react-router-dom";
 import { useState, useEffect } from "react";
-import popularJson from "./docs/popular.json";
-import movieJson from "./docs/movie.json";
-import MoviePage from "./Components/MoviePage";
 import Info from "./Components/Info";
-import PageSeek from "./Components/PageSeek";
 import TopRated from "./Components/TopRated";
 import LoadingBar from "react-top-loading-bar";
 import Timer from "./Components/Timer";
-import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import Attribution from "./Components/Attribution";
 import LoginPage, { loginState } from "./Components/LoginPage";
@@ -60,6 +55,7 @@ export default function App() {
                     path="/login"
                     element={
                         <>
+                            <Timer setProgress={setProgress} />
                             <LoginPage />
                         </>
                     }

@@ -19,7 +19,7 @@
 }
 
 .navbar a {
-    color: #5B5B66;
+    color: #5b5b66;
     text-decoration: none;
     font-weight: bold;
     font-size: 16px;
@@ -27,4 +27,27 @@
 
 .navbar a:hover {
     color: #e2e2e2;
+}
+
+@media only screen and (max-width:40.625em) { 
+    .search{
+        width: max-content;
+
+        padding: 0px 10px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+	.search-input {
+        width: 100px;
+        height: 35px;
+    }
+
+    .search i{
+        margin-left: 15px;
+
+        font-size: 35px;
+    }
 }
