@@ -76,13 +76,13 @@ export default function LoginPage({}) {
                     <input
                         className="user-name"
                         type="text"
-                        placeholder="User name"
+                        placeholder="User name [hint: asd]"
                         onChange={handleUserName}
                     />
                     <input
                         className="user-pass"
                         type="text"
-                        placeholder="Password"
+                        placeholder="Password [hint: 123]"
                         onChange={handlePassword}
                     />
 
