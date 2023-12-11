@@ -86,23 +86,23 @@ export default function LoginPage({}) {
                         onChange={handlePassword}
                     />
 
-                    <button className="login-here" onClick={checkLogin}>
-                        Login
-                    </button>
-                    <button className="login-forgot">Forgot Password?</button>
+                    <div className="login-button-group">
+                        <button className="login-here" onClick={checkLogin}>
+                            Login
+                        </button>
+                        <button className="login-forgot">
+                            Forgot Password?
+                        </button>
+                    </div>
                 </div>
 
                 {/* register */}
                 <div className="register-container">
-                    <p className="register-title">
-                        <span>FilmPedia</span>
-                    </p>
                     <p className="register-text register-text">
                         New here,
                         <br />
                         <span>create account</span> to continue
                     </p>
-
                     <input
                         className="user-name"
                         type="text"
@@ -115,11 +115,11 @@ export default function LoginPage({}) {
                         placeholder="Password"
                         onChange={handleRegisterPassword}
                     />
-
-                    <button className="register-here">Register</button>
-                    <button className="register-forgot" onClick={addLogin}>
-                        Create Account
-                    </button>
+                    <div className="register-button-group">
+                        <button className="register-here" onClick={addLogin}>
+                            Register
+                        </button>
+                    </div>
                 </div>
             </div>
         </>

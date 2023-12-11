@@ -6,6 +6,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background-color: #1d1d1d;
 }
 
 .login-container,
@@ -19,7 +21,8 @@
     display: flex;
     flex-direction: column;
 
-    background-color: aquamarine;
+    background-color: #171717;
+    color: aliceblue;
 }
 
 .login-container p,
@@ -40,6 +43,7 @@
 .login-container button,
 .register-container button {
     height: 30px;
+    width: 250px;
 
     margin-top: 5px;
 }
@@ -49,7 +53,6 @@
     margin-top: 20px;
 }
 
-.login-container .login-forgot,
 .register-container .register-forgot {
     margin-bottom: 40px;
 }
@@ -71,13 +74,44 @@
     text-decoration: underline;
 }
 
-.register-container {
-    margin-left: 10px;
+.register-text {
+    margin-top: 107px;
 }
 
-.wrong{
+.register-here {
+    margin-bottom: 50px;
+}
+
+.wrong {
     margin: 0px 20px !important;
 
     font-size: 15px !important;
     color: red;
+}
+
+.login-button-group {
+    margin: 50px 0px;
+    margin-top: 25px;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.login-button-group .login-here,
+.login-button-group .login-forgot {
+    width: 45%;
+
+    margin: 0px;
+}
+
+.register-container .user-pass {
+    margin-bottom: 5px;
+}
+
+.register-button-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
