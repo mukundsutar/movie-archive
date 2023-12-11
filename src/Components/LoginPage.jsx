@@ -96,6 +96,10 @@ export default function LoginPage({}) {
                     </div>
                 </div>
 
+                <div className="seperator-container">
+                    <div className="seperator"></div>
+                </div>
+
                 {/* register */}
                 <div className="register-container">
                     <p className="register-text register-text">
