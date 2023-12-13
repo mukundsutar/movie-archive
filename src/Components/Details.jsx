@@ -106,6 +106,12 @@ export default function Details({ apiData, movieInfoData }) {
         fetchMyAPI();
     }, [movieID]);
 
+    const handleDeatilsClick = () => {
+        console.log(movieID);
+
+        setCurrMovieIDj(movieID);
+    };
+
     return (
         <>
             <SkeletonTheme baseColor="#404040" highlightColor="#525252">
@@ -127,7 +133,10 @@ export default function Details({ apiData, movieInfoData }) {
                         </div>
                     </div>
 
-                    <div className="reccom-ele reccom-ele-poster">
+                    <div
+                        className="reccom-ele reccom-ele-poster"
+                        onClick={handleDeatilsClick}
+                    >
                         {moviePoster && (
                             <NavLink to={"/movie"}>
                                 <img src={moviePoster} alt="" />

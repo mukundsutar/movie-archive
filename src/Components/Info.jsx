@@ -14,7 +14,6 @@ export default function Info() {
     const [movieKeyword, setMovieKeyword] = useState();
     const [currMovieIDj, setCurrMovieIDj] = useAtom(currMovieID);
 
-    // let currID = localStorage.getItem("id");
     let currID = currMovieIDj;
     let movieLang;
 
@@ -64,14 +63,17 @@ export default function Info() {
                     <div className="info-container-2">
                         <div className="info-2-ele">
                             Overview: <br />
-                            {movieData.overview || <Skeleton width={100} />}
+                            <span className="data">
+                                {movieData.overview || <Skeleton width={100} />}
+                            </span>
                         </div>
 
                         <br />
                         <br />
 
                         <div className="info-2-ele">
-                            Status: {movieData.status}
+                            Status:{" "}
+                            <span className="data">{movieData.status}</span>
                         </div>
 
                         {movieData.budget != 0 && (
@@ -80,16 +82,22 @@ export default function Info() {
                                 <br />
 
                                 <div className="info-2-ele">
-                                    Budget: ${movieData.budget} &#40;USD&#41;, ₹
-                                    {movieData.budget * 83}
+                                    Budget:{" "}
+                                    <span className="data">
+                                        ${movieData.budget} &#40;USD&#41;, ₹
+                                        {movieData.budget * 83}
+                                    </span>
                                 </div>
 
                                 <br />
                                 <br />
 
                                 <div className="info-2-ele">
-                                    Revenue: ${movieData.revenue} &#40;USD&#41;,
-                                    ₹{movieData.revenue * 83}
+                                    Revenue:{" "}
+                                    <span className="data">
+                                        ${movieData.revenue} &#40;USD&#41;, ₹
+                                        {movieData.revenue * 83}
+                                    </span>
                                 </div>
                             </div>
                         )}
@@ -99,7 +107,8 @@ export default function Info() {
 
                         {movieData && (
                             <div className="info-2-ele">
-                                Original Language: {movieLang}
+                                Original Language:{" "}
+                                <span className="data">{movieLang}</span>
                             </div>
                         )}
 
@@ -108,9 +117,10 @@ export default function Info() {
 
                         <div className="info-2-ele">
                             Audience Score:{" "}
-                            {Math.round(movieData.vote_average * 10) / 10 || (
-                                <Skeleton width={100} />
-                            )}
+                            <span className="data">
+                                {Math.round(movieData.vote_average * 10) /
+                                    10 || <Skeleton width={100} />}
+                            </span>
                         </div>
 
                         <br />

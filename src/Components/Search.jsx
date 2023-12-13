@@ -2,9 +2,16 @@ import React from "react";
 import "../CSS/Search.css";
 import { NavLink } from "react-router-dom";
 import MediaQuery from "react-responsive";
+import { atom, useAtom } from "jotai";
+
+export const navbarClicker = atom(false);
 
 export default function Search() {
-    const
+    const [navbarClick, setNavbarClicker] = useAtom(navbarClicker);
+
+    const handleNavbarClick = () => {
+        setNavbarClicker(!navbarClick);
+    };
 
     return (
         <>
@@ -44,7 +51,7 @@ export default function Search() {
                         />
                     </form>
 
-                    <i className="bi bi-list"></i>
+                    <i className="bi bi-list" onClick={handleNavbarClick}></i>
                 </div>
             </MediaQuery>
         </>

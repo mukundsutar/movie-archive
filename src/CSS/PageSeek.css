@@ -87,3 +87,21 @@
     font-size: 25px;
     text-decoration: overline;
 }
+
+@media only screen and (max-width: 650px) {
+    .page-seek-container{
+        box-sizing: border-box;
+        width: 100%;
+
+        padding: 0px 10px;
+        padding-bottom: 10px;
+    }
+
+    .btn-prev{
+        margin-right: 0px;
+    }
+
+    .current-page-number{
+        margin: 0px;
+    }
+}

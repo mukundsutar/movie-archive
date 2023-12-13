@@ -50,4 +50,30 @@
 
         font-size: 35px;
     }
+
+    .res-navbar {
+        padding-right: 20px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+
+        background-color: #171717;
+
+        font-size: 20px;
+    }
+
+    .res-navbar > * {
+        padding: 5px;
+    }
+
+    .res-navbar a {
+        text-decoration: none;
+        color: #5b5b66;
+    }
+
+    .res-navbar a:visited {
+        color: #5b5b66;
+    }
 }

@@ -2,8 +2,7 @@ import "./App.css";
 import Header from "./Components/Header";
 import Details from "./Components/Details";
 import Gallery from "./Components/Gallery";
-import TMDB from "./Components/TMDB";
-import { Routes, Route, Navigate, redirect } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Info from "./Components/Info";
 import TopRated from "./Components/TopRated";
@@ -34,8 +33,6 @@ export default function App() {
     }, []);
 
     const [loginStateCheck] = useAtom(loginState);
-
-    console.log(loginStateCheck);
 
     return (
         <>

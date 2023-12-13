@@ -3,20 +3,20 @@
 
     background-color: #1d1d1d;
     color: #e2e2e2;
-    font-family: 'Arimo', sans-serif;
+    font-family: "Arimo", sans-serif;
 }
 
-.info-2-keyword h3{
+.info-2-keyword h3 {
     margin-top: 0px;
 }
 
-.info-2-word{
+.info-2-word {
     height: 30px;
     width: max-content;
 
     padding: 0px 10px;
     margin: 5px 5px;
-    
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -25,11 +25,22 @@
     border-radius: 5px;
 }
 
-.keyword-skeleton{
+.keyword-skeleton {
     display: flex;
     flex-wrap: wrap;
 }
 
-.word-skeleton{
+.word-skeleton {
     margin: 5px;
+}
+
+.data{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 650px) {
+    .info-container-2 {
+        padding: 50px 20px;
+    }
 }
