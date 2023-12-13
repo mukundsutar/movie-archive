@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Arimo&display=swap");
 
 .tile-container {
     width: 183px;
@@ -11,7 +11,7 @@
 
     background-color: #353535;
     color: aliceblue;
-    font-family: 'Arimo', sans-serif;
+    font-family: "Arimo", sans-serif;
     border-radius: 5px;
 }
 
@@ -29,6 +29,7 @@
 .tile-poster img {
     width: 150px;
     height: 225px;
+
     border-radius: 3px;
 }
 
@@ -44,7 +45,7 @@
 }
 
 .tile-name:hover {
-    color: #5B5B66;
+    color: #5b5b66;
 }
 
 .tile-year {
@@ -59,7 +60,7 @@
 }
 
 .tile-container:hover {
-    animation: shadow-drop-center .18s ease-out both;
+    animation: shadow-drop-center 0.18s ease-out both;
 }
 
 @keyframes shadow-drop-center {
@@ -70,5 +71,34 @@
     100% {
         box-shadow: 0 0 20px 0 #ffffff59;
         border-radius: 10px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .tile-container {
+        width: 120px;
+        height: 200px;
+    }
+
+    .tile-poster {
+        width: 100px;
+        height: 150px;
+
+        margin: auto;
+        margin-top: 5px;
+        margin-bottom: 0px;
+    }
+
+    .tile-poster img {
+        width: 100px;
+        height: 150px;
+    }
+
+    .navlink-tile {
+        width: 125px;
+    }
+
+    .tile-year {
+        margin-bottom: 5px;
     }
 }

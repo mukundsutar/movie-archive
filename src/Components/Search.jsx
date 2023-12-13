@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 import MediaQuery from "react-responsive";
 
 export default function Search() {
+    const
+
     return (
         <>
             <MediaQuery minWidth={651}>

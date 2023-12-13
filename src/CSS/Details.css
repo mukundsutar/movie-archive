@@ -7,7 +7,7 @@
 
     background-color: #1d1d1d;
     color: aliceblue;
-    font-family: 'Arimo', sans-serif;
+    font-family: "Arimo", sans-serif;
 }
 
 .reccom-ele-info {
@@ -60,14 +60,14 @@
 }
 
 .plot {
-    height: 100px;
+    height: 100% !important;
     width: 480px;
 
     flex-grow: 2;
 }
 
 .reccom-ele-poster img:hover {
-    animation: shadow-drop-center .3s ease-in-out both;
+    animation: shadow-drop-center 0.3s ease-in-out both;
 }
 
 @keyframes shadow-drop-center {
@@ -92,51 +92,102 @@
 }
 
 .reccom-ele-poster:hover {
-    animation: vibrate-3 2s linear infinite forwards
+    animation: vibrate-3 2s linear infinite forwards;
 }
 
 @keyframes vibrate-3 {
     0% {
-        transform: translate(0)
+        transform: translate(0);
     }
 
     10% {
-        transform: translate(-2px, -2px)
+        transform: translate(-2px, -2px);
     }
 
     20% {
-        transform: translate(2px, -2px)
+        transform: translate(2px, -2px);
     }
 
     30% {
-        transform: translate(-2px, 2px)
+        transform: translate(-2px, 2px);
     }
 
     40% {
-        transform: translate(2px, 2px)
+        transform: translate(2px, 2px);
     }
 
     50% {
-        transform: translate(-2px, -2px)
+        transform: translate(-2px, -2px);
     }
 
     60% {
-        transform: translate(2px, -2px)
+        transform: translate(2px, -2px);
     }
 
     70% {
-        transform: translate(-2px, 2px)
+        transform: translate(-2px, 2px);
     }
 
     80% {
-        transform: translate(-2px, -2px)
+        transform: translate(-2px, -2px);
     }
 
     90% {
-        transform: translate(2px, -2px)
+        transform: translate(2px, -2px);
     }
 
     100% {
-        transform: translate(0)
+        transform: translate(0);
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .reccom-container {
+        height: max-content;
+
+        padding: 40px 20px;
+    }
+
+    .reccom-ele-info {
+        width: 80%;
+        height: 100%;
+
+        font-size: 15px;
+    }
+
+    .reccom-ele-poster {
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 2;
+    }
+
+    .reccom-ele-poster img {
+        height: 150px;
+
+        border-radius: 5px;
+    }
+
+    /* individual elements */
+    .name {
+        height: 100px;
+        width: 100%;
+
+        font-size: 25px;
+    }
+
+    .year {
+        height: 35px;
+    }
+
+    .genre {
+        height: 40px;
+    }
+
+    .plot {
+        height: 10px;
+        width: 100%;
     }
 }

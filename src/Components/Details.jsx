@@ -1,7 +1,5 @@
 import React from "react";
 import "../CSS/Details.css";
-import movieJson from "../docs/movie.json";
-import poster from "../img/spider-man ATSV.jpg";
 import { useState, useEffect } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";

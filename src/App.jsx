@@ -65,12 +65,12 @@ export default function App() {
                     path="/"
                     element={
                         <>
-                            {!loginStateCheck && (
+                            {/* {!loginStateCheck && (
                                 <Navigate exact from="/" to="/login" />
                             )}
                             {loginStateCheck && (
                                 <Navigate exact from="/login" to="/" />
-                            )}
+                            )} */}
                             <Timer setProgress={setProgress} />
                             <Details apiData={apiData} />
                             <Gallery apiData={apiData} />

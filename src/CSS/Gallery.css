@@ -15,3 +15,24 @@
     margin: 50px 30px;
     margin-top: 0px;
 }
+
+@media only screen and (max-width: 650px) {
+    .gallery-container {
+        max-width: 100vw;
+    
+        padding: 50px 0px;
+    
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    
+        text-decoration: none;
+        background-color: #171717;
+    }
+    
+    .tile-container {
+        box-sizing: border-box;
+        margin: 50px 30px;
+        margin-top: 0px;
+    }
+}

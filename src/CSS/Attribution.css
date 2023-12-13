@@ -19,6 +19,12 @@
     margin-bottom: 30px;
 }
 
-.attribution-container:hover  span {
-    color: #e31b23 ;
+.attribution-container:hover span {
+    color: #e31b23;
+}
+
+@media only screen and (max-width: 650px) {
+    .attribution-container span {
+        color: #e31b23;
+    }
 }
